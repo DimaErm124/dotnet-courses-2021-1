@@ -6,40 +6,32 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            int a = 0;
-            int b = 0;
+            Console.CursorVisible = false;
 
-            InputSide inputSide = new InputSide();
+            int n = 0;
+
+            InputNumber inputNumber = new InputNumber();
 
             Console.WriteLine("Hello, User.\n" +
-                "This program is designed to find the square of a rectangle.\n" +
-                "Enter two sides to find the square.\n" +
+                "This program is designed to construct image from stars.\n" +
+                "Need enter number of stars.\n" +
                 "Please, enter only positive integers greater than zero.\n");
 
             do
             {
-                Console.WriteLine("Please, enter the first side:");
-                string stringA = Console.ReadLine();
-                inputSide.NumberChecking(stringA, ref a);
-                Console.WriteLine(inputSide.ToString() + "\n");
+                Console.WriteLine("Please, enter number:");
+                string stringNumber = Console.ReadLine();
+                inputNumber.NumberChecking(stringNumber, ref n);
+                Console.WriteLine(inputNumber.ToString());
             }
-            while (a <= 0);
+            while (n <= 0);
 
-            do
-            {
-                Console.WriteLine("Please, enter the second side:");
-                string stringB = Console.ReadLine();
-                inputSide.NumberChecking(stringB, ref b);
-                Console.WriteLine(inputSide.ToString() + "\n");
-            }
-            while (b <= 0);
+            ImageСonstructor imageСonstructor = new ImageСonstructor(n);
 
-            Rectangle rectangle = new Rectangle(a, b);
-
-            Console.WriteLine(rectangle.ToString());
+            Console.WriteLine(imageСonstructor.ToString());
         }
     }
-    public class InputSide
+    public class InputNumber
     {
         public string ReturningString { get; set; }
 
@@ -49,26 +41,27 @@ namespace Task2
             {
                 if (side > 0)
                 {
-                    ReturningString = "Great! You enter a normal number";
+                    ReturningString = "Great! You enter a correct number.";
                 }
                 else
                 {
                     if (side < 0)
                     {
                         ReturningString = "Entered value is less than zero.\n" +
-                            "Please, enter only positive integers greater than zero.";
+                            "Please, enter only positive integers greater than zero.\n";
                     }
                     else
                     {
                         ReturningString = "Entered value is zero.\n" +
-                            "Please, enter only positive integers greater than zero.";
+                            "Please, enter only positive integers greater than zero.\n";
                     }
                 }
 
             }
             else
             {
-                ReturningString = "";
+                ReturningString = "Entered value is not number or not integer number.\n" +
+                            "Please, enter only positive integers greater than zero.\n";
             }
         }
 
@@ -79,29 +72,36 @@ namespace Task2
 
     }
 
-    public class Rectangle
+    public class ImageСonstructor
     {
-        public Rectangle(int a, int b)
+        public ImageСonstructor(int n)
         {
-            sideA = a;
-            sideB = b;
-            SquareCalculate();
+            number = n;
+            ImageConstruct();
         }
 
-        private int sideA;
+        private int number;
 
-        private int sideB;
+        public string Image { get; set; }
 
-        public int Square { get; set; }
-
-        public void SquareCalculate()
+        public void ImageConstruct()
         {
-            Square = sideA * sideB;
+           for(int i=1; i <= number; i++)
+           {
+                for(int j = 0; j < i; j++)
+                {
+                    Image += "*";
+                }
+                if (i < number) 
+                {
+                    Image += "\n";
+                }
+           }
         }
 
         public override string ToString()
         {
-            return "Square of rectangle with sides " + sideA + "," + sideB + ": " + Square.ToString();
+            return Image;
         }
     }
 }

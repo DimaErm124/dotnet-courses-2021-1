@@ -6,6 +6,8 @@ namespace Task1
     {
         static void Main(string[] args)
         {
+            Console.CursorVisible = false;
+
             int a = 0;
             int b = 0;
 
@@ -13,7 +15,7 @@ namespace Task1
 
             Console.WriteLine("Hello, User.\n" +
                 "This program is designed to find the square of a rectangle.\n" +
-                "Enter two sides to find the square.\n" +
+                "Need enter two sides to find the square.\n" +
                 "Please, enter only positive integers greater than zero.\n");
 
             do
@@ -49,7 +51,7 @@ namespace Task1
             {
                 if (side > 0)
                 {
-                    ReturningString = "Great! You enter a normal number";
+                    ReturningString = "Great! You enter a correct number.";
                 }
                 else
                 {
