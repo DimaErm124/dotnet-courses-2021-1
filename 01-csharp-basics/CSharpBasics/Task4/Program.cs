@@ -34,7 +34,7 @@ namespace Task4
 
     public class InputNumber
     {
-        public string ReturningString { get; set; }
+        private string returningString;
 
         public void NumberChecking(string stringSide, ref int side)
         {
@@ -42,18 +42,18 @@ namespace Task4
             {
                 if (side > 0)
                 {
-                    ReturningString = "Great! You enter a correct number.";
+                    returningString = "Great! You enter a correct number.";
                 }
                 else
                 {
                     if (side < 0)
                     {
-                        ReturningString = "Entered value is less than zero.\n" +
+                        returningString = "Entered value is less than zero.\n" +
                             "Please, enter only positive integers greater than zero.\n";
                     }
                     else
                     {
-                        ReturningString = "Entered value is zero.\n" +
+                        returningString = "Entered value is zero.\n" +
                             "Please, enter only positive integers greater than zero.\n";
                     }
                 }
@@ -61,16 +61,15 @@ namespace Task4
             }
             else
             {
-                ReturningString = "Entered value is not number or not integer number.\n" +
+                returningString = "Entered value is not number or not integer number.\n" +
                             "Please, enter only positive integers greater than zero.\n";
             }
         }
 
         public override string ToString()
         {
-            return ReturningString;
+            return returningString;
         }
-
     }
 
     public class ImageСonstructor
@@ -83,7 +82,7 @@ namespace Task4
 
         private int number;
 
-        public string Image { get; set; }
+        private string image;
 
         public void ImageConstruct()
         {
@@ -93,19 +92,19 @@ namespace Task4
                 {
                     for (int j = 2*number; j > i; j--) 
                     {
-                        Image += " ";
+                        image += " ";
                     }
                     for (int j = 0; j < i; j++)
                     {
-                        Image += "*";
+                        image += "*";
                     }
                     for (int j = 1; j < i; j++)
                     {
-                        Image += "*";
+                        image += "*";
                     }
                     if (n < number || i < number)
                     {
-                        Image += "\n";
+                        image += "\n";
                     }
                 } 
             }
@@ -113,7 +112,7 @@ namespace Task4
 
         public override string ToString()
         {
-            return Image;
+            return image;
         }
     }
 }

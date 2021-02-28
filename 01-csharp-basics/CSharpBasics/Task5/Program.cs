@@ -26,7 +26,7 @@ namespace Task5
 
         private int number;
 
-        public int Sum { get; set; }
+        private int sum;
 
         public void Summarize()
         {
@@ -34,14 +34,14 @@ namespace Task5
             {
                 if (i % 3 == 0 || i % 5 == 0)
                 {
-                    Sum += i;
+                    sum += i;
                 }
             }
         }
 
         public override string ToString()
         {
-            return Sum.ToString();
+            return sum.ToString();
         }
     }
 }

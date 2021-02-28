@@ -43,7 +43,7 @@ namespace Task1
     }
     public class InputSide
     {
-        public string ReturningString { get; set; }
+        private string returningString;
 
         public void NumberChecking(string stringSide, ref int side)
         {
@@ -51,18 +51,18 @@ namespace Task1
             {
                 if (side > 0)
                 {
-                    ReturningString = "Great! You enter a correct number.";
+                    returningString = "Great! You enter a correct number.";
                 }
                 else
                 {
                     if (side < 0)
                     {
-                        ReturningString = "Entered value is less than zero.\n" +
+                        returningString = "Entered value is less than zero.\n" +
                             "Please, enter only positive integers greater than zero.";
                     }
                     else
                     {
-                        ReturningString = "Entered value is zero.\n" +
+                        returningString = "Entered value is zero.\n" +
                             "Please, enter only positive integers greater than zero.";
                     }
                 }
@@ -70,13 +70,13 @@ namespace Task1
             }
             else
             {
-                ReturningString = "";
+                returningString = "";
             }
         }
 
         public override string ToString()
         {
-            return ReturningString;
+            return returningString;
         }
 
     }
@@ -94,16 +94,16 @@ namespace Task1
 
         private int sideB;
 
-        public int Square { get; set; }
+        private int square;
 
         public void SquareCalculate()
         {
-            Square = sideA * sideB;
+            square = sideA * sideB;
         }
 
         public override string ToString()
         {
-            return "Square of rectangle with sides " + sideA + "," + sideB + ": " + Square.ToString();
+            return "Square of rectangle with sides " + sideA + "," + sideB + ": " + square.ToString();
         }
     }
 }
