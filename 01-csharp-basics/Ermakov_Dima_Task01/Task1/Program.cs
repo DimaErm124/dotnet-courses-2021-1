@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task1
 {
@@ -18,19 +14,19 @@ namespace Task1
             Console.WriteLine("Hello, User.\n" +
                 "This program is designed to find the square of a rectangle.\n" +
                 "Enter two sides to find the square.\n" +
-                "Please, enter only positive integers greater than zero.\n") ;
+                "Please, enter only positive integers greater than zero.\n");
 
             do
             {
                 Console.WriteLine("Please, enter the first side:");
                 string stringA = Console.ReadLine();
-                inputSide.NumberChecking(stringA,ref a);
+                inputSide.NumberChecking(stringA, ref a);
                 Console.WriteLine(inputSide.ToString() + "\n");
             }
             while (a <= 0);
 
-            do 
-            { 
+            do
+            {
                 Console.WriteLine("Please, enter the second side:");
                 string stringB = Console.ReadLine();
                 inputSide.NumberChecking(stringB, ref b);
@@ -38,20 +34,18 @@ namespace Task1
             }
             while (b <= 0);
 
-            Rectangle rectangle = new Rectangle(a,b);
+            Rectangle rectangle = new Rectangle(a, b);
 
             Console.WriteLine(rectangle.ToString());
         }
-
     }
-
     public class InputSide
     {
         public string ReturningString { get; set; }
 
         public void NumberChecking(string stringSide, ref int side)
         {
-            if(Int32.TryParse(stringSide,out side))
+            if (Int32.TryParse(stringSide, out side))
             {
                 if (side > 0)
                 {
@@ -70,7 +64,7 @@ namespace Task1
                             "Please, enter only positive integers greater than zero.";
                     }
                 }
-                
+
             }
             else
             {
@@ -107,7 +101,7 @@ namespace Task1
 
         public override string ToString()
         {
-            return "Square of rectangle with sides "+sideA+","+sideB+": "+Square.ToString();
+            return "Square of rectangle with sides " + sideA + "," + sideB + ": " + Square.ToString();
         }
     }
 }
