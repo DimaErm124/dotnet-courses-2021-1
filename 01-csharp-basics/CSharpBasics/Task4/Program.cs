@@ -90,7 +90,7 @@ namespace Task4
             {
                 for (int i = 1; i <= n; i++)
                 {
-                    for (int j = 2*number; j > i; j--) 
+                    for (int j = number; j > i; j--) 
                     {
                         image += " ";
                     }

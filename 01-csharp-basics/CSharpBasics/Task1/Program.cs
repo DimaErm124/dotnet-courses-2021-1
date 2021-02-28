@@ -38,6 +38,7 @@ namespace Task1
 
             Rectangle rectangle = new Rectangle(a, b);
 
+            Console.WriteLine("Square of rectangle with sides " + a + "," + b + ": ");
             Console.WriteLine(rectangle.ToString());
         }
     }
@@ -103,7 +104,7 @@ namespace Task1
 
         public override string ToString()
         {
-            return "Square of rectangle with sides " + sideA + "," + sideB + ": " + square.ToString();
+            return square.ToString();
         }
     }
 }
