@@ -23,6 +23,7 @@ namespace Task1
 
             integerArray.GenerateArray();
             array = integerArray.Array;
+
             integerArray.SortAndGetMinAndMaxValues(out maxV, out minV);
 
             PrintArray(array);

@@ -22,13 +22,10 @@ namespace ArrayLibrary
 
             Random random = new Random();
 
-            for (int i = 0; i < Array.GetLength(0); i++)
-            {
-                for (int j = 0; j < Array.GetLength(1); j++)
-                {
-                    Array[i, j] = random.Next(MaxRandomValue);
-                }
-            }
+            for (int i = 0; i < Array.GetLength(0); i++)            
+                for (int j = 0; j < Array.GetLength(1); j++)                
+                    Array[i, j] = random.Next(MaxRandomValue);                
+            
         }   
     }
 }

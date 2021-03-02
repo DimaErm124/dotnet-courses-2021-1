@@ -28,7 +28,6 @@ namespace Task4
                 new TwoDimensionalIntegerArray(oneSize, twoSize, maxRandomValue);
 
             integerArray.GenerateArray();
-
             array = integerArray.Array;
 
             Console.WriteLine("\nOriginal array:");
@@ -44,23 +43,17 @@ namespace Task4
         {
             int sum = 0;
 
-            for (int i = 0; i < array.GetLength(0); i++)
-            {
-                for (int j = 0; j < array.GetLength(1); j++)
-                {
-                    sum += IsEvenPosition(array, i,j);
-                }
-            }
-
+            for (int i = 0; i < array.GetLength(0); i++)            
+                for (int j = 0; j < array.GetLength(1); j++)                
+                    sum += IsEvenPosition(array, i,j);           
+            
             return sum;
         }
 
         public static int IsEvenPosition(int[,] array, int i, int j)
         {
-            if ((i + j) % 2 == 0)
-            {
-                return array[i,j];
-            }
+            if ((i + j) % 2 == 0)            
+                return array[i,j];        
 
             return 0;
         }
@@ -92,10 +85,9 @@ namespace Task4
         {
             for (int i = 0; i < array.GetLength(0); i++)
             {
-                for (int j = 0; j < array.GetLength(1); j++)
-                {
+                for (int j = 0; j < array.GetLength(1); j++)                
                     Console.Write(array[i,j] + " ");
-                }
+                
                 Console.WriteLine("");
             }
         }

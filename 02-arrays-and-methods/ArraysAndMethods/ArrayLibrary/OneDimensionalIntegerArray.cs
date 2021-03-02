@@ -24,22 +24,17 @@ namespace ArrayLibrary
             Random random = new Random();
 
             for (int i = 0; i < Array.Length; i++)
-            {
-                Array[i] = random.Next(-MaxRandomValue, MaxRandomValue);
-            }
+                Array[i] = random.Next(-MaxRandomValue, MaxRandomValue);  
+            
         }
 
         public int FindMinValue()
         {
             int maxValue = Array[0];
 
-            for (int i = 1; i < Array.Length; i++)
-            {
-                if (maxValue < Array[i])
-                {
-                    maxValue = Array[i];
-                }
-            }
+            for (int i = 1; i < Array.Length; i++)            
+                if (maxValue < Array[i])                
+                    maxValue = Array[i];               
 
             return maxValue;
         }
@@ -48,14 +43,10 @@ namespace ArrayLibrary
         {
             int minValue = Array[0];
 
-            for (int i = 1; i < Array.Length; i++)
-            {
-                if (minValue > Array[i])
-                {
-                    minValue = Array[i];
-                }
-            }
-
+            for (int i = 1; i < Array.Length; i++)            
+                if (minValue > Array[i])                
+                    minValue = Array[i];                
+            
             return minValue;
         }
 
@@ -63,18 +54,15 @@ namespace ArrayLibrary
         {
             int arr;
 
-            for (int i = 0; i < Array.Length; i++)
-            {
-                for (int j = 0; j < Array.Length - 1; j++)
-                {
+            for (int i = 0; i < Array.Length; i++)            
+                for (int j = 0; j < Array.Length - 1; j++)                
                     if (Array[j] > Array[j + 1])
                     {
                         arr = Array[j];
                         Array[j] = Array[j + 1];
                         Array[j + 1] = arr;
-                    }
-                }
-            }
+                    }                
+            
         }
 
         public void SortAndGetMinAndMaxValues(out int maxValue, out int minValue)

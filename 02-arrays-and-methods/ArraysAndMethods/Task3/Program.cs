@@ -24,7 +24,6 @@ namespace Task3
                 new OneDimensionalIntegerArray(oneSize, maxRandomValue);
 
             integerArray.GenerateArray();
-
             array = integerArray.Array;
 
             Console.WriteLine("\nOriginal array:");
@@ -40,20 +39,16 @@ namespace Task3
         {
             int sum = 0;
 
-            for (int i = 0; i < array.Length; i++)
-            {
-                sum += IsPositive(array, i);
-            }
+            for (int i = 0; i < array.Length; i++)            
+                sum += IsPositive(array, i);            
 
             return sum;
         }
 
         public static int IsPositive(int[] array, int i)
         {
-            if (array[i] > 0)
-            {
-                return array[i];
-            }
+            if (array[i] > 0)            
+                return array[i];            
 
             return 0;
         }
@@ -83,10 +78,8 @@ namespace Task3
 
         public static void PrintArray(int[] array)
         {
-            for (int i = 0; i < array.Length; i++)
-            {
-                Console.Write(array[i] + " ");
-            }
+            for (int i = 0; i < array.Length; i++)            
+                Console.Write(array[i] + " ");            
         }
     }
 }
