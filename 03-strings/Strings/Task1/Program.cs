@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HandlerLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,13 @@ namespace Task1
     {
         static void Main(string[] args)
         {
-            string inputString;
+            int count = 1;
 
-            Console.WriteLine("Enter string:");
-            inputString = Console.ReadLine();
+            var inputStrings = InputHandler.EnterString(count);            
 
+            float averageWordsLength = StringHandler.FindAverageWordsLengthInString(inputStrings[count-1]);
+
+            Console.WriteLine("Average words length: {0}", averageWordsLength);
         }   
     }
 }
