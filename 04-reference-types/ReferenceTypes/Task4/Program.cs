@@ -9,7 +9,7 @@ namespace Task4
     {
         static void Main(string[] args)
         {
-            MyString myString1 = new MyString();
+            MyString myString1 = new MyString("hello");
             MyString myString2 = new MyString("lo".ToCharArray());
 
             Console.WriteLine(" {0} + {1} = {2}", myString1, myString2, myString1 + myString2);

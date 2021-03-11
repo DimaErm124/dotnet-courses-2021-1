@@ -35,11 +35,31 @@ namespace Task4
 
         public static bool operator ==(MyString ms1, MyString ms2)
         {
+            if ((object)ms1 == null && (object)ms2 == null)
+            {
+                return true;
+            }
+
+            if ((object)ms1 == null || (object)ms2 == null)
+            {
+                return false;
+            }
+
             return ms1._charArray.Equals(ms2._charArray);
         }
 
         public static bool operator !=(MyString ms1, MyString ms2)
         {
+            if ((object)ms1 == null && (object)ms2 == null)
+            {
+                return false;
+            }
+
+            if ((object)ms1 == null || (object)ms2 == null)
+            {
+                return true;
+            }
+
             return !ms1._charArray.Equals(ms2._charArray);
         }
 
