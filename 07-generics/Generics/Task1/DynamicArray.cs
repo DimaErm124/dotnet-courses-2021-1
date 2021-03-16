@@ -50,13 +50,21 @@ namespace Task1
         }
 
         public DynamicArray(T[] array)
-        {            
-            Length = GetLenght(array);
-
-            if (Length == array.Length)
-                IncreaseArray(array);
+        {
+            if (array == null)
+            {
+                Capacity = 8;
+                _array = new T[Capacity];
+            }
             else
-                _array = array;
+            {
+                Length = GetLenght(array);
+
+                if (Length == array.Length)
+                    IncreaseArray(array);
+                else
+                    _array = array;
+            }
         }
 
         public void Add(T item)

@@ -9,17 +9,17 @@ namespace Task1
     {
         static void Main(string[] args)
         {
-            DynamicArray<int> dynamicIntArray = CreateArray<int>();
+            DynamicArray<int?> dynamicIntArray = CreateArray<int?>();
             Console.WriteLine("Create dynamic array: {0}", dynamicIntArray);
 
-            Add<int>(dynamicIntArray, 5);
+            Add<int?>(dynamicIntArray, 5);
 
-            AddRange<int>(dynamicIntArray, new int[] { 4, 5, 6, 2 });
+            AddRange<int?>(dynamicIntArray, new int?[] { 4, 5, 6, 2 });
 
-            Insert<int>(dynamicIntArray, 3, 7);
-            Insert<int>(dynamicIntArray, 3, 2);
+            Insert<int?>(dynamicIntArray, 3, 7);
+            Insert<int?>(dynamicIntArray, 3, 2);
 
-            Remove<int>(dynamicIntArray, 5);
+            Remove<int?>(dynamicIntArray, 5);
 
             DynamicArray<char> dynamicCharArray = CreateArray<char>();
             Console.WriteLine("Create dynamic array: {0}", dynamicCharArray);
@@ -35,14 +35,14 @@ namespace Task1
             Remove<char>(dynamicCharArray, 'h');
         }
 
-        public static DynamicArray<T> CreateArray<T>() 
+        public static DynamicArray<T> CreateArray<T>(T[] array = null) 
             where T:new()
         {
             DynamicArray<T> dynamicArray = new DynamicArray<T>();
 
             try
             {
-                dynamicArray = new DynamicArray<T>(5);                
+                dynamicArray = new DynamicArray<T>(array);                
             }
             catch (Exception e)
             {
