@@ -1,9 +1,8 @@
-﻿using System;
+﻿using SortLibrary;
+using System;
 
 namespace Task1
 {
-    public delegate int Comparison(string a, string b);
-
     class Program
     {
         static void Main(string[] args)
