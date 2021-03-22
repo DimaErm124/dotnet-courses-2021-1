@@ -23,7 +23,7 @@ namespace Task2
         public void GoIn(Person person)
         {
             inOffice(person, new PersonEventArgs(DateTime.Now));
-            inOffice += person.Greeting;
+            
         }
 
         public void GoOut(Person person)
