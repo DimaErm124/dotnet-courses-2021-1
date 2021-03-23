@@ -8,6 +8,8 @@ namespace Task3
     {
         static void Main(string[] args)
         {
+            Thread.CurrentThread.Name = "main thread";
+            
             var arr = new string[] { "aabb", "aaabb", "a", "b", "abbbbbb", "baaa", "aaaba" };
 
             var strArray = new StringArrayCustomSort(arr, CompareStrings);
@@ -15,7 +17,7 @@ namespace Task3
             var sortThread = strArray.SortAsync();
 
             strArray.FinishSorting += FinishSorting;
-            Thread.CurrentThread.Name = " 111"; 
+
             sortThread.Start();
             strArray.Sort();
 
@@ -29,7 +31,7 @@ namespace Task3
 
         public static void FinishSorting()
         {
-            Console.WriteLine("Sorting is end");
+            Console.WriteLine("Sorting is end in " + Thread.CurrentThread.Name);
         }
     }
 }

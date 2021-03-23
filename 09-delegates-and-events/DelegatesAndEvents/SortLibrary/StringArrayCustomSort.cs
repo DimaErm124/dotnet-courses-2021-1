@@ -32,7 +32,7 @@ namespace SortLibrary
                 for (int j = 0; j < _array.Length - 1; j++)
                 {                    
                     var comparison = _comparison?.Invoke(_array[j], _array[j + 1]);
-                    Console.WriteLine(i+Thread.CurrentThread.Name);
+                    
                     if (comparison > 0)
                     {                        
                         Transposition(j, j + 1);
@@ -54,7 +54,7 @@ namespace SortLibrary
         public Thread SortAsync()
         {
             var thread = new Thread(Sort);
-            thread.Name = "  22";
+            thread.Name = "asynchronous thread";
             return thread;
         }
 
