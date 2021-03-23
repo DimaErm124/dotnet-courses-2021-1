@@ -6,7 +6,8 @@ namespace Task3
     {
         static void Main(string[] args)
         {
-			var points = new TwoDPoint[] { new TwoDPoint(1, 1),
+			var points = new TwoDPoint[] { 
+				new TwoDPoint(1, 1),
 				new TwoDPoint(10, 10), 
 				new TwoDPoint(10, 1), 
 				new TwoDPoint(1, 10), 
