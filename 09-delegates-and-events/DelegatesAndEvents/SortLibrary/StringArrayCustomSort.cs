@@ -5,11 +5,14 @@ namespace SortLibrary
 {
     public delegate int Comparison(string a, string b);
 
+    public delegate void CallBack();
     public class StringArrayCustomSort
     {
         private string[] _array;
 
         private Comparison _comparison;
+
+        public event CallBack FinishSorting;
 
         public StringArrayCustomSort(string[] array, Comparison comparison)
         {
@@ -27,14 +30,13 @@ namespace SortLibrary
             for (int i = 0; i < _array.Length; i++)
             {                
                 for (int j = 0; j < _array.Length - 1; j++)
-                {
-                    Console.WriteLine(i+Thread.CurrentThread.Name);
+                {                    
                     var comparison = _comparison?.Invoke(_array[j], _array[j + 1]);
-                    
+                    Console.WriteLine(i+Thread.CurrentThread.Name);
                     if (comparison > 0)
-                    {
-                        
+                    {                        
                         Transposition(j, j + 1);
+                        
                     }
                     if (comparison == 0)
                     {
@@ -42,12 +44,17 @@ namespace SortLibrary
                     }
                 }
             }
+
+            if (FinishSorting != null)
+            {
+                FinishSorting();
+            }
         }
 
         public Thread SortAsync()
         {
             var thread = new Thread(Sort);
-            thread.Name = "asyc";
+            thread.Name = "  22";
             return thread;
         }
 

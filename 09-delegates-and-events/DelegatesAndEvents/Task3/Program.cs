@@ -1,5 +1,6 @@
 ﻿using SortLibrary;
 using System;
+using System.Threading;
 
 namespace Task3
 {
@@ -13,6 +14,8 @@ namespace Task3
 
             var sortThread = strArray.SortAsync();
 
+            strArray.FinishSorting += FinishSorting;
+            Thread.CurrentThread.Name = " 111"; 
             sortThread.Start();
             strArray.Sort();
 
@@ -24,5 +27,9 @@ namespace Task3
             return a.Length - b.Length;
         }
 
+        public static void FinishSorting()
+        {
+            Console.WriteLine("Sorting is end");
+        }
     }
 }
