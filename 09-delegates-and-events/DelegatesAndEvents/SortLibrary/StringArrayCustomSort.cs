@@ -38,10 +38,6 @@ namespace SortLibrary
                         Transposition(j, j + 1);
                         
                     }
-                    if (comparison == 0)
-                    {
-                        Order(j, j + 1);
-                    }
                 }
             }
 
@@ -58,29 +54,6 @@ namespace SortLibrary
             return thread;
         }
 
-        private void Order(int i, int j)
-        {
-            if (!IsOrder(i, j))
-            {
-                Transposition(i, j);
-            }
-        }
-
-        private bool IsOrder(int i, int j)
-        {
-            for (int t = 0; t < _array[i].Length; t++)
-            {
-                if (_array[i][t] < _array[j][t])
-                {
-                    return true;
-                }
-                if (_array[i][t] > _array[j][t])
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
 
         private void Transposition(int i, int j)
         {

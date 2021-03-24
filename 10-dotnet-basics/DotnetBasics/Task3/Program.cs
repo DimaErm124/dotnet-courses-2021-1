@@ -102,7 +102,7 @@ namespace Task3
 
         public override int GetHashCode()
         {
-			return Tuple.Create(x, y).GetHashCode();
+			return HashCode.Combine(x, y);
         }
     }
 
