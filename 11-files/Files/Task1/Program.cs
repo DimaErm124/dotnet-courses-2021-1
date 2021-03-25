@@ -39,10 +39,9 @@ namespace Task1
 
         public static void GetSquareNumber(string[] stringArray)
         {
-            double result;
             for (int i = 0; i < stringArray.Length; i++)
             {
-                if (double.TryParse(stringArray[i],out result))
+                if (double.TryParse(stringArray[i],out double result))
                 {
                     stringArray[i] = (result * result).ToString();
                 }
