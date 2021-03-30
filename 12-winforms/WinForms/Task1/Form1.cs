@@ -10,16 +10,14 @@ using System.Windows.Forms;
 
 namespace Task1
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        private IList<User> _users;
+        private BindingSource _usersSource = new BindingSource();
+
+        public MainForm()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void AddUserButton_Click(object sender, EventArgs e)
@@ -27,25 +25,7 @@ namespace Task1
 
         }
 
-        private void UserTabPage_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void AddRewardButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 
     public class User

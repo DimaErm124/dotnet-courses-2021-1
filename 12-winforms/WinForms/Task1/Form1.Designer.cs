@@ -1,7 +1,7 @@
 ﻿
 namespace Task1
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -32,130 +32,137 @@ namespace Task1
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.dgvUserRewards = new System.Windows.Forms.DataGridView();
             this.AddUserButton = new System.Windows.Forms.Button();
-            this.AddRewardButton = new System.Windows.Forms.Button();
+            this.AddUserRewardButton = new System.Windows.Forms.Button();
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.UserTabPage = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
             this.RewardTabPage = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
+            this.AddRewardButton = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUserRewards)).BeginInit();
             this.MainTabControl.SuspendLayout();
             this.UserTabPage.SuspendLayout();
+            this.RewardTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvUsers
             // 
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsers.Location = new System.Drawing.Point(3, 35);
+            this.dgvUsers.Location = new System.Drawing.Point(3, 2);
+            this.dgvUsers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.RowHeadersWidth = 51;
-            this.dgvUsers.RowTemplate.Height = 29;
-            this.dgvUsers.Size = new System.Drawing.Size(526, 282);
+            this.dgvUsers.Size = new System.Drawing.Size(460, 236);
             this.dgvUsers.TabIndex = 0;
             // 
             // dgvUserRewards
             // 
             this.dgvUserRewards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUserRewards.Location = new System.Drawing.Point(3, 353);
+            this.dgvUserRewards.Location = new System.Drawing.Point(3, 255);
+            this.dgvUserRewards.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvUserRewards.Name = "dgvUserRewards";
             this.dgvUserRewards.RowHeadersWidth = 51;
-            this.dgvUserRewards.RowTemplate.Height = 29;
-            this.dgvUserRewards.Size = new System.Drawing.Size(526, 232);
+            this.dgvUserRewards.Size = new System.Drawing.Size(460, 171);
             this.dgvUserRewards.TabIndex = 1;
             // 
             // AddUserButton
             // 
-            this.AddUserButton.Location = new System.Drawing.Point(535, 35);
+            this.AddUserButton.Location = new System.Drawing.Point(468, 2);
+            this.AddUserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AddUserButton.Name = "AddUserButton";
-            this.AddUserButton.Size = new System.Drawing.Size(219, 48);
+            this.AddUserButton.Size = new System.Drawing.Size(192, 36);
             this.AddUserButton.TabIndex = 2;
             this.AddUserButton.Text = "Add user";
             this.AddUserButton.UseVisualStyleBackColor = true;
             this.AddUserButton.Click += new System.EventHandler(this.AddUserButton_Click);
             // 
-            // AddRewardButton
+            // AddUserRewardButton
             // 
-            this.AddRewardButton.Location = new System.Drawing.Point(535, 89);
-            this.AddRewardButton.Name = "AddRewardButton";
-            this.AddRewardButton.Size = new System.Drawing.Size(219, 48);
-            this.AddRewardButton.TabIndex = 3;
-            this.AddRewardButton.Text = "Add reward";
-            this.AddRewardButton.UseVisualStyleBackColor = true;
-            this.AddRewardButton.Click += new System.EventHandler(this.AddRewardButton_Click);
+            this.AddUserRewardButton.Location = new System.Drawing.Point(468, 42);
+            this.AddUserRewardButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AddUserRewardButton.Name = "AddUserRewardButton";
+            this.AddUserRewardButton.Size = new System.Drawing.Size(192, 36);
+            this.AddUserRewardButton.TabIndex = 3;
+            this.AddUserRewardButton.Text = "Add reward";
+            this.AddUserRewardButton.UseVisualStyleBackColor = true;
             // 
             // MainTabControl
             // 
             this.MainTabControl.Controls.Add(this.UserTabPage);
             this.MainTabControl.Controls.Add(this.RewardTabPage);
             this.MainTabControl.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MainTabControl.Location = new System.Drawing.Point(12, 12);
+            this.MainTabControl.Location = new System.Drawing.Point(10, 9);
+            this.MainTabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainTabControl.Name = "MainTabControl";
             this.MainTabControl.SelectedIndex = 0;
-            this.MainTabControl.Size = new System.Drawing.Size(769, 621);
+            this.MainTabControl.Size = new System.Drawing.Size(673, 466);
             this.MainTabControl.TabIndex = 4;
             // 
             // UserTabPage
             // 
-            this.UserTabPage.Controls.Add(this.label2);
-            this.UserTabPage.Controls.Add(this.label1);
             this.UserTabPage.Controls.Add(this.dgvUsers);
-            this.UserTabPage.Controls.Add(this.AddRewardButton);
+            this.UserTabPage.Controls.Add(this.AddUserRewardButton);
             this.UserTabPage.Controls.Add(this.dgvUserRewards);
             this.UserTabPage.Controls.Add(this.AddUserButton);
-            this.UserTabPage.Location = new System.Drawing.Point(4, 29);
+            this.UserTabPage.Location = new System.Drawing.Point(4, 24);
+            this.UserTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserTabPage.Name = "UserTabPage";
-            this.UserTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.UserTabPage.Size = new System.Drawing.Size(761, 588);
+            this.UserTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.UserTabPage.Size = new System.Drawing.Size(665, 438);
             this.UserTabPage.TabIndex = 0;
             this.UserTabPage.Text = "Users";
             this.UserTabPage.UseVisualStyleBackColor = true;
-            this.UserTabPage.Click += new System.EventHandler(this.UserTabPage_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 20);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Users:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // RewardTabPage
             // 
-            this.RewardTabPage.Location = new System.Drawing.Point(4, 29);
+            this.RewardTabPage.Controls.Add(this.AddRewardButton);
+            this.RewardTabPage.Controls.Add(this.dataGridView1);
+            this.RewardTabPage.Location = new System.Drawing.Point(4, 24);
+            this.RewardTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RewardTabPage.Name = "RewardTabPage";
-            this.RewardTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.RewardTabPage.Size = new System.Drawing.Size(761, 588);
+            this.RewardTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.RewardTabPage.Size = new System.Drawing.Size(665, 438);
             this.RewardTabPage.TabIndex = 1;
             this.RewardTabPage.Text = "Rewards";
             this.RewardTabPage.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // AddRewardButton
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 330);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 20);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Rewards of user:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.AddRewardButton.Location = new System.Drawing.Point(469, 2);
+            this.AddRewardButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AddRewardButton.Name = "AddRewardButton";
+            this.AddRewardButton.Size = new System.Drawing.Size(192, 36);
+            this.AddRewardButton.TabIndex = 2;
+            this.AddRewardButton.Text = "Add reward";
+            this.AddRewardButton.UseVisualStyleBackColor = true;
+            this.AddRewardButton.Click += new System.EventHandler(this.AddUserButton_Click);
             // 
-            // Form1
+            // dataGridView1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(460, 434);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // MainForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 645);
+            this.ClientSize = new System.Drawing.Size(700, 484);
             this.Controls.Add(this.MainTabControl);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "MainForm";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUserRewards)).EndInit();
             this.MainTabControl.ResumeLayout(false);
             this.UserTabPage.ResumeLayout(false);
-            this.UserTabPage.PerformLayout();
+            this.RewardTabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -165,12 +172,12 @@ namespace Task1
         private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.DataGridView dgvUserRewards;
         private System.Windows.Forms.Button AddUserButton;
-        private System.Windows.Forms.Button AddRewardButton;
+        private System.Windows.Forms.Button AddUserRewardButton;
         private System.Windows.Forms.TabControl MainTabControl;
         private System.Windows.Forms.TabPage UserTabPage;
         private System.Windows.Forms.TabPage RewardTabPage;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button AddRewardButton;
     }
 }
 
