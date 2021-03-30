@@ -13,87 +13,67 @@ namespace Task2
 
         public static void App(string catalog, string pattern)
         {
-            bool end = false;
-            var log = new Log(catalog, pattern);
+            var logger = new Logger(catalog, pattern);
 
-            while (!end)
+            while (true)
             {
                 Console.Clear();
 
-                Console.WriteLine("1 - add text\n" +
-                                    "2 - pull\n" +
-                                    "0 - end");
+                Console.WriteLine("1 - watch\n" +
+                                  "2 - pull\n" +
+                                  "0 - end\n");
+
                 var item = Console.ReadLine();
 
                 if (item == "1")
                 {
-                    ChooseFile(catalog, pattern, log.Push());
+                    Watch(logger);
                 }
                 if (item == "2")
                 {
-                    log.Pull();
+                    Pull(logger);
                 }
                 if (item == "0")
                 {
-                    end = true;
+                    break;
                 }
 
             }
         }
 
-        public static void ChooseFile(string catalog, string pattern, bool push)
+        public static void Watch(Logger logger)
         {
-            bool end = false;
-            while (!end)
+            logger.LogEnable();
+
+            Console.Clear();
+
+            Console.WriteLine("Watching...");
+
+            Console.ReadLine();
+
+            logger.LogEnable();
+        }
+
+        public static void Pull(Logger logger)
+        {
+            while (true)
             {
                 Console.Clear();
-
-                if (!push)
-                {
-                    Console.WriteLine("Copy no made! Please, relogin.");
-                }
-
-                Console.WriteLine("Choose file:");
-
-                var filesNameArray = Directory.GetFiles(catalog, pattern, SearchOption.AllDirectories);
-
-                for (int i = 0; i < filesNameArray.Length; i++)
-                {
-                    Console.WriteLine("{0} - {1}\n", i + 1, Path.GetFileName(filesNameArray[i]));
-                }
-
                 Console.WriteLine("0 - end\n");
+                Console.WriteLine("Enter date and time ( year/month/day hour:minute ):\n");
 
                 var item = Console.ReadLine();
 
                 if (item == "0")
                 {
-                    end = true;
+                    break;
                 }
-
-                for(int i = 0; i < filesNameArray.Length; i++)
+                if (DateTime.TryParse(item, out DateTime dateTime))
                 {
-                    if (item == (i + 1).ToString())
-                    {
-                        Console.Clear();
+                    logger.Pull(dateTime);
 
-                        Console.WriteLine("Enter text to add:");
-                        var text = Console.ReadLine();
-
-                        AddText(filesNameArray[i], text);
-
-                        end = true;
-                    }                    
+                    break;
                 }
-            }
-        }
-
-        public static void AddText(string path, string text)
-        {
-            using (var fileStream = new FileStream(path, FileMode.Open))
-            {
-                var bytes = Encoding.Default.GetBytes(text);
-                fileStream.Write(bytes, 0, bytes.Length);
             }
         }
     }
