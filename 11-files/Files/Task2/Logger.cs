@@ -12,6 +12,7 @@ namespace Task2
         public Logger(string catalog, string pattern)
         {
             _log = new Log(catalog, pattern);
+
             WatcherInit(catalog, pattern);
         }
 
@@ -19,17 +20,17 @@ namespace Task2
         {
             _watcher = new FileSystemWatcher(catalog);
 
-            _watcher.NotifyFilter = NotifyFilters.Attributes
-                                 | NotifyFilters.LastWrite;
+            _watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName;
+            _watcher.IncludeSubdirectories = true;
 
             _watcher.Changed += _watcher_Changed;
+            _watcher.Deleted += _watcher_Changed;
             _watcher.Filter = pattern;
-            _watcher.EnableRaisingEvents = false;
         }
 
-        public void LogEnable()
+        public void LogEnable(bool enable)
         {
-            _watcher.EnableRaisingEvents = !_watcher.EnableRaisingEvents;
+            _watcher.EnableRaisingEvents = enable;
         }
 
         public void Pull(DateTime dateTime)

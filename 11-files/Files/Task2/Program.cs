@@ -19,9 +19,7 @@ namespace Task2
             {
                 Console.Clear();
 
-                Console.WriteLine("1 - watch\n" +
-                                  "2 - pull\n" +
-                                  "0 - end\n");
+                Console.WriteLine("1 - watch\n2 - pull\n0 - end\n");
 
                 var item = Console.ReadLine();
 
@@ -43,7 +41,7 @@ namespace Task2
 
         public static void Watch(Logger logger)
         {
-            logger.LogEnable();
+            logger.LogEnable(true);
 
             Console.Clear();
 
@@ -51,7 +49,7 @@ namespace Task2
 
             Console.ReadLine();
 
-            logger.LogEnable();
+            logger.LogEnable(false);
         }
 
         public static void Pull(Logger logger)

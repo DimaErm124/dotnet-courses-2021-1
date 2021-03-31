@@ -73,6 +73,8 @@ namespace Task2
         {
             try
             {
+                ClearCatalog();
+
                 var fileNames = Directory.GetFiles(_catalogBackUp, _patternLog, SearchOption.AllDirectories);
 
                 foreach (var el in fileNames)
@@ -92,6 +94,8 @@ namespace Task2
                         fileStream.Read(bytes, 0, bytes.Length);
                     }
 
+                    Directory.CreateDirectory(Path.GetDirectoryName(fileName));
+
                     using (var fileStream = new FileStream(fileName.Replace(_extensionLog, _extension), FileMode.Create))
                     {
                         fileStream.Position = 0;
@@ -105,6 +109,27 @@ namespace Task2
             {
                 return false;
             }
+        }
+
+        private void ClearCatalog()
+        {
+            var catalogs = Directory.GetDirectories(_catalog);
+
+            foreach (var el in catalogs) 
+            {
+                if (el != Path.GetDirectoryName(_catalogBackUp))
+                {
+                    Directory.Delete(el, true);
+                }
+            }
+
+            var files = Directory.GetFiles(_catalog, _pattern, SearchOption.AllDirectories);
+
+            foreach (var el in files) 
+            {
+                File.Delete(el);
+            }
+
         }
 
         private bool CompareFileDateTime(DateTime dateTime1, DateTime dateTime2)

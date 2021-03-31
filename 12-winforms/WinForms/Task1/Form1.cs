@@ -22,7 +22,12 @@ namespace Task1
 
         private void AddUserButton_Click(object sender, EventArgs e)
         {
+            var form = new AddOrEditUser();
 
+            if (form.ShowDialog() == DialogResult.OK)
+            {                
+                _users.Add(form.User);
+            }
         }
 
 
@@ -39,6 +44,14 @@ namespace Task1
         public DateTime Birthdate { get; set; }
 
         public int Age { get; }
+
+        public User(int id, string firstName, string lastName, DateTime birthdate)
+        {
+            ID = id;
+            FirstName = firstName;
+            LastName = lastName;
+            Birthdate = birthdate;
+        }
     }
 
     public class Reward
@@ -48,5 +61,12 @@ namespace Task1
         public string Title { get; set; }
 
         public string Description { get; set; }
+
+        public Reward(int id, string title, string description = "")
+        {
+            ID = id;
+            Title = title;
+            Description = description;
+        }
     }
 }

@@ -8,18 +8,11 @@ using System.Windows.Forms;
 
 namespace Task1
 {
-    public partial class AddOrEditUser : Form
+    public partial class RewardForm : Form
     {
-        public User User { get; set; }
-
-        public AddOrEditUser()
+        public RewardForm()
         {
             InitializeComponent();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            User = new User();
         }
     }
 }
