@@ -29,67 +29,83 @@ namespace Task1
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.components = new System.ComponentModel.Container();
+            this.TitleTextBox = new System.Windows.Forms.TextBox();
+            this.DescriptionRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.CreateRewardButton = new System.Windows.Forms.Button();
+            this.RewardErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.RewardErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // TitleTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 43);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(345, 27);
-            this.textBox1.TabIndex = 0;
+            this.TitleTextBox.Location = new System.Drawing.Point(10, 32);
+            this.TitleTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TitleTextBox.Name = "TitleTextBox";
+            this.TitleTextBox.Size = new System.Drawing.Size(302, 23);
+            this.TitleTextBox.TabIndex = 0;
+            this.TitleTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TitleTextBox_Validating);
+            this.TitleTextBox.Validated += new System.EventHandler(this.TitleTextBox_Validated);
             // 
-            // richTextBox1
+            // DescriptionRichTextBox
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 112);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(345, 326);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.DescriptionRichTextBox.Location = new System.Drawing.Point(10, 84);
+            this.DescriptionRichTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DescriptionRichTextBox.Name = "DescriptionRichTextBox";
+            this.DescriptionRichTextBox.Size = new System.Drawing.Size(302, 246);
+            this.DescriptionRichTextBox.TabIndex = 1;
+            this.DescriptionRichTextBox.Text = "";
+            this.DescriptionRichTextBox.Validated += new System.EventHandler(this.DescriptionRichTextBox_Validated);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 20);
+            this.label1.Location = new System.Drawing.Point(10, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 20);
+            this.label1.Size = new System.Drawing.Size(32, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "Title:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 89);
+            this.label2.Location = new System.Drawing.Point(10, 67);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 20);
+            this.label2.Size = new System.Drawing.Size(70, 15);
             this.label2.TabIndex = 3;
             this.label2.Text = "Description:";
             // 
-            // button1
+            // CreateRewardButton
             // 
-            this.button1.Location = new System.Drawing.Point(12, 444);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(345, 38);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Create";
-            this.button1.UseVisualStyleBackColor = true;
+            this.CreateRewardButton.Location = new System.Drawing.Point(10, 333);
+            this.CreateRewardButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CreateRewardButton.Name = "CreateRewardButton";
+            this.CreateRewardButton.Size = new System.Drawing.Size(302, 28);
+            this.CreateRewardButton.TabIndex = 4;
+            this.CreateRewardButton.Text = "Create";
+            this.CreateRewardButton.UseVisualStyleBackColor = true;
+            this.CreateRewardButton.Click += new System.EventHandler(this.CreateRewardButton_Click);
+            // 
+            // RewardErrorProvider
+            // 
+            this.RewardErrorProvider.ContainerControl = this;
             // 
             // RewardForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 494);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(342, 370);
+            this.Controls.Add(this.CreateRewardButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.DescriptionRichTextBox);
+            this.Controls.Add(this.TitleTextBox);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "RewardForm";
             this.Text = "RewardForm";
+            ((System.ComponentModel.ISupportInitialize)(this.RewardErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,10 +113,11 @@ namespace Task1
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.TextBox TitleTextBox;
+        private System.Windows.Forms.RichTextBox DescriptionRichTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button CreateRewardButton;
+        private System.Windows.Forms.ErrorProvider RewardErrorProvider;
     }
 }

@@ -10,9 +10,51 @@ namespace Task1
 {
     public partial class RewardForm : Form
     {
+        public string Title { get; set; }
+
+        public string Description { get; set; }
+
         public RewardForm()
         {
             InitializeComponent();
+        }
+
+        private void CreateRewardButton_Click(object sender, EventArgs e)
+        {
+            RewardErrorProvider.Clear();
+
+            if (this.ValidateChildren())
+            {
+                DialogResult = DialogResult.OK;
+            }
+        }
+        
+        private void TitleTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(TitleTextBox.Text))
+            {
+                RewardErrorProvider.SetError(TitleTextBox, "Empty!");
+                e.Cancel = true;
+            }
+            else if (string.IsNullOrWhiteSpace(TitleTextBox.Text))
+            {
+                RewardErrorProvider.SetError(TitleTextBox, "Whitespace!");
+                e.Cancel = true;
+            }
+            else
+            {
+                e.Cancel = false;
+            }
+        }
+
+        private void TitleTextBox_Validated(object sender, EventArgs e)
+        {
+            Title = TitleTextBox.Text;
+        }               
+
+        private void DescriptionRichTextBox_Validated(object sender, EventArgs e)
+        {
+            Description = DescriptionRichTextBox.Text;
         }
     }
 }
