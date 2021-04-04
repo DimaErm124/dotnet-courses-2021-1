@@ -14,9 +14,25 @@ namespace Task1
 
         public string Description { get; set; }
 
-        public RewardForm()
+        public RewardForm(string functionName)
         {
             InitializeComponent();
+
+            CreateRewardButton.Text = functionName;
+
+            this.Text = functionName + " new reward";
+        }
+
+        public RewardForm(Reward reward, string functionName)
+        {
+            InitializeComponent();
+
+            TitleTextBox.Text = reward.Title;
+            DescriptionRichTextBox.Text = reward.Description;
+
+            CreateRewardButton.Text = functionName;
+
+            this.Text = functionName + " " + reward;
         }
 
         private void CreateRewardButton_Click(object sender, EventArgs e)

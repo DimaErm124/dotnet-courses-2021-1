@@ -15,10 +15,10 @@ namespace Task1
         private int _rewardsCounter;
         private int _usersCounter;
 
-        private IList<User> _users;
-        private IList<Reward> _rewards;
+        private List<User> _users;
+        private List<Reward> _rewards;
         
-        private IDictionary<User, IList<Reward>> _rewardDictionary;
+        private Dictionary<User, List<Reward>> _rewardDictionary;
 
         private BindingSource _usersSource;
         private BindingSource _rewardsSource;
@@ -34,7 +34,7 @@ namespace Task1
             _users = new List<User>();
             _rewards = new List<Reward>();
 
-            _rewardDictionary = new Dictionary<User, IList<Reward>>();
+            _rewardDictionary = new Dictionary<User, List<Reward>>();
 
             _usersSource = new BindingSource();
             _rewardsSource = new BindingSource();
@@ -50,11 +50,21 @@ namespace Task1
 
         }
 
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            if (MainTabControl.SelectedTab == UserTabPage) 
+            {
+                AddUserButton_Click(sender, e);
+            }
+            else if (MainTabControl.SelectedTab == RewardTabPage)
+            {
+                AddRewardButton_Click(sender, e);
+            }
+        }
+
         private void AddUserButton_Click(object sender, EventArgs e)
         {
-            var form = new AddOrEditUser(_rewards.ToArray());
-
-            form.Text = "Add new user";
+            var form = new AddOrEditUser(_rewards.ToArray(), AddButton.Text);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
@@ -68,21 +78,42 @@ namespace Task1
 
                 _usersSource.ResetBindings(false);
             }
-
         }
-        
+
+        private void AddRewardButton_Click(object sender, EventArgs e)
+        {
+            var form = new RewardForm(AddButton.Text);
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _rewardsCounter++;
+
+                _rewards.Add(new Reward(_rewardsCounter, form.Title, form.Description));
+
+                _rewardsSource.ResetBindings(false);
+            }
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            if (MainTabControl.SelectedTab == UserTabPage)
+            {
+                EditUserButton_Click(sender, e);
+            }
+            else if (MainTabControl.SelectedTab == RewardTabPage)
+            {
+                EditRewardButton_Click(sender, e);
+            }
+        }
+
         private void EditUserButton_Click(object sender, EventArgs e)
         {
             var user = (User)_usersSource.Current;
 
-            if (user == null)
-            {
-                return;
-            }
+            if (user == null)            
+                return;            
 
-            var form = new AddOrEditUser(_rewards.ToArray(), user, _rewardDictionary[user]);
-
-            form.Text = "Edit " + user;
+            var form = new AddOrEditUser(_rewards.ToArray(), user, _rewardDictionary[user], EditButton.Text);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
@@ -94,29 +125,107 @@ namespace Task1
 
                 _users.Add(changingUser);
 
-                _users = _users.OrderBy(x => x.ID).ToList();
+                _users.Sort();
 
                 _rewardDictionary.Add(changingUser, form.Rewards);
 
-                _usersSource.DataSource = _users;
+                _usersSource.ResetBindings(false);
             }
         }
-        
-        private void AddRewardButton_Click(object sender, EventArgs e)
+
+        private void EditRewardButton_Click(object sender, EventArgs e)
         {
-            var form = new RewardForm();
+            var reward = (Reward)_rewardsSource.Current;
+
+            if (reward == null)            
+                return;            
+
+            var form = new RewardForm(reward, EditButton.Text);
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                _rewardsCounter++;
+                _rewards.Remove(reward);
 
-                _rewards.Add(new Reward(_rewardsCounter, form.Title, form.Description));
+                var changingReward = new Reward(reward.ID, form.Title, form.Description);
 
-                _rewardsSource.ResetBindings(false); 
+                _rewards.Add(changingReward);
+
+                _rewards.Sort();
+
+                ResetRewardsDictionary(reward, changingReward);
+
+                _rewardsSource.ResetBindings(false);
             }
         }
 
-        private void UsersDGV_Enter(object sender, EventArgs e)
+        
+        
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            if (MainTabControl.SelectedTab == UserTabPage)
+            {
+                DeleteUserButton_Click(sender, e);
+            }
+            else if (MainTabControl.SelectedTab == RewardTabPage)
+            {
+                DeleteRewardButton_Click(sender, e);
+            }
+        }
+
+        private void DeleteUserButton_Click(object sender, EventArgs e)
+        {
+            var user = (User)_usersSource.Current;
+
+            if (user == null)
+                return;
+
+            _users.Remove(user);
+
+            _rewardDictionary.Remove(user);
+
+            _usersSource.ResetBindings(false);
+        }
+
+        private void DeleteRewardButton_Click(object sender, EventArgs e)
+        {
+            var reward = (Reward)_rewardsSource.Current;
+
+            if (reward == null)
+                return;
+
+            _rewards.Remove(reward);
+
+            DeleteRewardsDictionary(reward);
+
+            _rewardsSource.ResetBindings(false);
+        }
+        
+        private void ResetRewardsDictionary(Reward reward, Reward newReward)
+        {
+            foreach(var el in _rewardDictionary)
+            {
+                if (_rewardDictionary[el.Key].Contains(reward))
+                {
+                    _rewardDictionary[el.Key].Remove(reward);
+                    _rewardDictionary[el.Key].Add(newReward);
+
+                    _rewardDictionary[el.Key].Sort();
+                }
+            }            
+        }
+
+        private void DeleteRewardsDictionary(Reward reward)
+        {
+            foreach (var el in _rewardDictionary)
+            {
+                if (_rewardDictionary[el.Key].Contains(reward))
+                {
+                    _rewardDictionary[el.Key].Remove(reward);
+                }
+            }
+        }
+
+        private void UsersDGV_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -127,9 +236,24 @@ namespace Task1
             }
         }
 
-        private void UsersDGV_Leave(object sender, EventArgs e)
+        private void UsersDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
             _userRewardsSource.DataSource = null;
+        }
+
+        private void MainTabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            _userRewardsSource.DataSource = null;
+        }
+
+        private void UsersDGV_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (_users.Count == 0)
+                return;
+
+            var column = UsersDGV.Columns[e.ColumnIndex];
+
+            _usersSource.DataSource = _users.OrderBy(x => column.Name).ToList();
         }
     }
 }

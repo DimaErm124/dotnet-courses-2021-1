@@ -1,6 +1,8 @@
-﻿namespace Task1
+﻿using System;
+
+namespace Task1
 {
-    public class Reward
+    public class Reward : IComparable
     {
         public int ID { get; set; }
 
@@ -18,6 +20,11 @@
         public override string ToString()
         {
             return Title;
+        }
+         
+        public int CompareTo(object obj)
+        {
+            return ID.CompareTo(((Reward)obj).ID);
         }
     }
 }

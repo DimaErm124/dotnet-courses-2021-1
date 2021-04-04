@@ -31,14 +31,13 @@ namespace Task1
         {
             this.UsersDGV = new System.Windows.Forms.DataGridView();
             this.UserRewardsDGV = new System.Windows.Forms.DataGridView();
-            this.AddUserButton = new System.Windows.Forms.Button();
+            this.AddButton = new System.Windows.Forms.Button();
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.UserTabPage = new System.Windows.Forms.TabPage();
-            this.DeleteUserButton = new System.Windows.Forms.Button();
-            this.EditUserButton = new System.Windows.Forms.Button();
             this.RewardTabPage = new System.Windows.Forms.TabPage();
-            this.AddRewardButton = new System.Windows.Forms.Button();
             this.RewardsDGV = new System.Windows.Forms.DataGridView();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.EditButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.UsersDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserRewardsDGV)).BeginInit();
             this.MainTabControl.SuspendLayout();
@@ -49,36 +48,43 @@ namespace Task1
             // 
             // UsersDGV
             // 
+            this.UsersDGV.AllowUserToAddRows = false;
+            this.UsersDGV.AllowUserToDeleteRows = false;
             this.UsersDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UsersDGV.Location = new System.Drawing.Point(3, 2);
             this.UsersDGV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UsersDGV.Name = "UsersDGV";
+            this.UsersDGV.ReadOnly = true;
             this.UsersDGV.RowHeadersWidth = 51;
             this.UsersDGV.Size = new System.Drawing.Size(460, 236);
             this.UsersDGV.TabIndex = 0;
-            this.UsersDGV.Enter += new System.EventHandler(this.UsersDGV_Enter);
-            this.UsersDGV.Leave += new System.EventHandler(this.UsersDGV_Leave);
+            this.UsersDGV.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersDGV_CellEnter);
+            this.UsersDGV.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersDGV_CellLeave);
+            this.UsersDGV.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.UsersDGV_ColumnHeaderMouseClick);
             // 
             // UserRewardsDGV
             // 
+            this.UserRewardsDGV.AllowUserToAddRows = false;
+            this.UserRewardsDGV.AllowUserToDeleteRows = false;
             this.UserRewardsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UserRewardsDGV.Location = new System.Drawing.Point(3, 255);
             this.UserRewardsDGV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserRewardsDGV.Name = "UserRewardsDGV";
+            this.UserRewardsDGV.ReadOnly = true;
             this.UserRewardsDGV.RowHeadersWidth = 51;
             this.UserRewardsDGV.Size = new System.Drawing.Size(460, 171);
             this.UserRewardsDGV.TabIndex = 1;
             // 
-            // AddUserButton
+            // AddButton
             // 
-            this.AddUserButton.Location = new System.Drawing.Point(468, 2);
-            this.AddUserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.AddUserButton.Name = "AddUserButton";
-            this.AddUserButton.Size = new System.Drawing.Size(192, 36);
-            this.AddUserButton.TabIndex = 2;
-            this.AddUserButton.Text = "Add user";
-            this.AddUserButton.UseVisualStyleBackColor = true;
-            this.AddUserButton.Click += new System.EventHandler(this.AddUserButton_Click);
+            this.AddButton.Location = new System.Drawing.Point(498, 35);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(192, 36);
+            this.AddButton.TabIndex = 2;
+            this.AddButton.Text = "Add";
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // MainTabControl
             // 
@@ -89,86 +95,79 @@ namespace Task1
             this.MainTabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainTabControl.Name = "MainTabControl";
             this.MainTabControl.SelectedIndex = 0;
-            this.MainTabControl.Size = new System.Drawing.Size(673, 466);
+            this.MainTabControl.Size = new System.Drawing.Size(482, 466);
             this.MainTabControl.TabIndex = 4;
+            this.MainTabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.MainTabControl_Selected);
             // 
             // UserTabPage
             // 
-            this.UserTabPage.Controls.Add(this.DeleteUserButton);
-            this.UserTabPage.Controls.Add(this.EditUserButton);
             this.UserTabPage.Controls.Add(this.UsersDGV);
             this.UserTabPage.Controls.Add(this.UserRewardsDGV);
-            this.UserTabPage.Controls.Add(this.AddUserButton);
             this.UserTabPage.Location = new System.Drawing.Point(4, 24);
             this.UserTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UserTabPage.Name = "UserTabPage";
             this.UserTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.UserTabPage.Size = new System.Drawing.Size(665, 438);
+            this.UserTabPage.Size = new System.Drawing.Size(474, 438);
             this.UserTabPage.TabIndex = 0;
             this.UserTabPage.Text = "Users";
             this.UserTabPage.UseVisualStyleBackColor = true;
             // 
-            // DeleteUserButton
-            // 
-            this.DeleteUserButton.Location = new System.Drawing.Point(468, 390);
-            this.DeleteUserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.DeleteUserButton.Name = "DeleteUserButton";
-            this.DeleteUserButton.Size = new System.Drawing.Size(192, 36);
-            this.DeleteUserButton.TabIndex = 4;
-            this.DeleteUserButton.Text = "Delete user";
-            this.DeleteUserButton.UseVisualStyleBackColor = true;
-            // 
-            // EditUserButton
-            // 
-            this.EditUserButton.Location = new System.Drawing.Point(468, 43);
-            this.EditUserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.EditUserButton.Name = "EditUserButton";
-            this.EditUserButton.Size = new System.Drawing.Size(192, 36);
-            this.EditUserButton.TabIndex = 3;
-            this.EditUserButton.Text = "Edit user";
-            this.EditUserButton.UseVisualStyleBackColor = true;
-            this.EditUserButton.Click += new System.EventHandler(this.EditUserButton_Click);
-            // 
             // RewardTabPage
             // 
-            this.RewardTabPage.Controls.Add(this.AddRewardButton);
             this.RewardTabPage.Controls.Add(this.RewardsDGV);
             this.RewardTabPage.Location = new System.Drawing.Point(4, 24);
             this.RewardTabPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RewardTabPage.Name = "RewardTabPage";
             this.RewardTabPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.RewardTabPage.Size = new System.Drawing.Size(665, 438);
+            this.RewardTabPage.Size = new System.Drawing.Size(474, 438);
             this.RewardTabPage.TabIndex = 1;
             this.RewardTabPage.Text = "Rewards";
             this.RewardTabPage.UseVisualStyleBackColor = true;
             // 
-            // AddRewardButton
-            // 
-            this.AddRewardButton.Location = new System.Drawing.Point(469, 2);
-            this.AddRewardButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.AddRewardButton.Name = "AddRewardButton";
-            this.AddRewardButton.Size = new System.Drawing.Size(192, 36);
-            this.AddRewardButton.TabIndex = 2;
-            this.AddRewardButton.Text = "Add reward";
-            this.AddRewardButton.UseVisualStyleBackColor = true;
-            this.AddRewardButton.Click += new System.EventHandler(this.AddRewardButton_Click);
-            // 
             // RewardsDGV
             // 
+            this.RewardsDGV.AllowUserToAddRows = false;
+            this.RewardsDGV.AllowUserToDeleteRows = false;
             this.RewardsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.RewardsDGV.Location = new System.Drawing.Point(3, 2);
             this.RewardsDGV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RewardsDGV.Name = "RewardsDGV";
+            this.RewardsDGV.ReadOnly = true;
             this.RewardsDGV.RowHeadersWidth = 51;
             this.RewardsDGV.Size = new System.Drawing.Size(460, 434);
             this.RewardsDGV.TabIndex = 1;
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Location = new System.Drawing.Point(498, 423);
+            this.DeleteButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(192, 36);
+            this.DeleteButton.TabIndex = 4;
+            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // EditButton
+            // 
+            this.EditButton.Location = new System.Drawing.Point(498, 75);
+            this.EditButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.EditButton.Name = "EditButton";
+            this.EditButton.Size = new System.Drawing.Size(192, 36);
+            this.EditButton.TabIndex = 3;
+            this.EditButton.Text = "Edit";
+            this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 484);
+            this.ClientSize = new System.Drawing.Size(701, 484);
+            this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.MainTabControl);
+            this.Controls.Add(this.EditButton);
+            this.Controls.Add(this.AddButton);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.Text = "Main form";
@@ -187,14 +186,13 @@ namespace Task1
 
         private System.Windows.Forms.DataGridView UsersDGV;
         private System.Windows.Forms.DataGridView UserRewardsDGV;
-        private System.Windows.Forms.Button AddUserButton;
+        private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.TabControl MainTabControl;
         private System.Windows.Forms.TabPage UserTabPage;
         private System.Windows.Forms.TabPage RewardTabPage;
         private System.Windows.Forms.DataGridView RewardsDGV;
-        private System.Windows.Forms.Button AddRewardButton;
-        private System.Windows.Forms.Button DeleteUserButton;
-        private System.Windows.Forms.Button EditUserButton;
+        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.Button EditButton;
     }
 }
 

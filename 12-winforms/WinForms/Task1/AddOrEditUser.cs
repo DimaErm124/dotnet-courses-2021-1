@@ -17,18 +17,22 @@ namespace Task1
 
         public DateTime Birthdate { get; set; }
 
-        public IList<Reward> Rewards { get; set; }
+        public List<Reward> Rewards { get; set; }
 
-        public AddOrEditUser(object[] objects)
+        public AddOrEditUser(object[] objects, string functionName)
         {
             InitializeComponent();
 
             Rewards = new List<Reward>();
 
             UserRewardsCheckedListBox.Items.AddRange(objects);
+
+            CreateUserButton.Text = functionName;
+
+            this.Text = functionName + " new user";
         }
 
-        public AddOrEditUser(object[] objects, User user, IList<Reward> rewards)
+        public AddOrEditUser(object[] objects, User user, IList<Reward> rewards, string functionName)
         {
             InitializeComponent();
 
@@ -44,6 +48,10 @@ namespace Task1
             {
                 UserRewardsCheckedListBox.SetItemChecked(reward.ID - 1, true);
             }
+
+            CreateUserButton.Text = functionName;
+
+            this.Text = functionName + " " + user;
         }
  
         private void FirstNameTextBox_Validated(object sender, EventArgs e)
@@ -135,7 +143,8 @@ namespace Task1
 
             if (this.ValidateChildren())
             {
-                Rewards = Rewards.OrderBy(x => x.ID).ToList();
+                Rewards.Sort();
+
                 DialogResult = DialogResult.OK;
             }
         }        
