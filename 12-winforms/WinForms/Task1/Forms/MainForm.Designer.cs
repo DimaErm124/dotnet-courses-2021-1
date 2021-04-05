@@ -136,6 +136,7 @@ namespace Task1
             this.RewardsDGV.RowHeadersWidth = 51;
             this.RewardsDGV.Size = new System.Drawing.Size(460, 434);
             this.RewardsDGV.TabIndex = 1;
+            this.RewardsDGV.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.RewardsDGV_ColumnHeaderMouseClick);
             // 
             // DeleteButton
             // 

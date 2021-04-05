@@ -10,6 +10,22 @@ namespace Task1
 
         public string Description { get; set; }
 
+        public object this[string fieldName]
+        {
+            get
+            {
+                switch (fieldName)
+                {
+                    case "Title":
+                        return Title;
+                    case "Description":
+                        return Description;                    
+                    default:
+                        return ID;
+                }
+            }
+        }
+
         public Reward(int id, string title, string description = "")
         {
             ID = id;

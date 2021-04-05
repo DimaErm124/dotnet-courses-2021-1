@@ -17,8 +17,28 @@ namespace Task1
             get
             {
                 var today = DateTime.Now;
-                return today.Year - Birthdate.Year - 1
-                    + ((today.Month >= Birthdate.Month && today.Day >= Birthdate.Day) ? 1 : 0);
+                return Birthdate.Year - today.Year - 1
+                    + ((today.Month >= Birthdate.Month || (today.Month == Birthdate.Month && today.Day >= Birthdate.Day)) ? 1 : 0);
+            }
+        }
+
+        public object this[string fieldName]
+        {
+            get
+            {
+                switch (fieldName)
+                {
+                    case "FirstName":
+                        return FirstName;
+                    case "LastName":
+                        return LastName;
+                    case "Birthdate":
+                        return Birthdate;
+                    case "Age":
+                        return Age;
+                    default:
+                        return ID;
+                }
             }
         }
 

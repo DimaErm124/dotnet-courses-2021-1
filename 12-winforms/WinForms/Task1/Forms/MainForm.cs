@@ -48,6 +48,9 @@ namespace Task1
 
             UserRewardsDGV.DataSource = _userRewardsSource;
 
+            UsersDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            RewardsDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            UserRewardsDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -253,7 +256,21 @@ namespace Task1
 
             var column = UsersDGV.Columns[e.ColumnIndex];
 
-            _usersSource.DataSource = _users.OrderBy(x => column.Name).ToList();
+            _users = _users.OrderBy(x => x[column.Name]).ToList();
+
+            _usersSource.DataSource = _users;
+        }
+
+        private void RewardsDGV_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (_rewards.Count == 0)
+                return;
+
+            var column = RewardsDGV.Columns[e.ColumnIndex];
+
+            _rewards = _rewards.OrderBy(x => x[column.Name]).ToList();
+
+            _rewardsSource.DataSource = _rewards;
         }
     }
 }

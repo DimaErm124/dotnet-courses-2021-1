@@ -57,6 +57,7 @@ namespace Task1
             this.DescriptionRichTextBox.Size = new System.Drawing.Size(302, 246);
             this.DescriptionRichTextBox.TabIndex = 1;
             this.DescriptionRichTextBox.Text = "";
+            this.DescriptionRichTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.DescriptionRichTextBox_Validating);
             this.DescriptionRichTextBox.Validated += new System.EventHandler(this.DescriptionRichTextBox_Validated);
             // 
             // label1

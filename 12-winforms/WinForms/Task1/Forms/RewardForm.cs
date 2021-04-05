@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace Task1
 {
     public partial class RewardForm : Form
-    {
+    {    
         public string Title { get; set; }
 
         public string Description { get; set; }
@@ -49,12 +49,31 @@ namespace Task1
         {
             if (string.IsNullOrEmpty(TitleTextBox.Text))
             {
-                RewardErrorProvider.SetError(TitleTextBox, "Empty!");
+                RewardErrorProvider.SetError(TitleTextBox, InputHandlerValue.ERROR_EMPTY);
                 e.Cancel = true;
             }
             else if (string.IsNullOrWhiteSpace(TitleTextBox.Text))
             {
-                RewardErrorProvider.SetError(TitleTextBox, "Whitespace!");
+                RewardErrorProvider.SetError(TitleTextBox, InputHandlerValue.ERROR_WHITESPACE);
+                e.Cancel = true;
+            }
+            else if (TitleTextBox.Text.Length >= InputHandlerValue.MAX_LENGTH_TITLE)
+            {
+                RewardErrorProvider.SetError(TitleTextBox, InputHandlerValue.ERROR_LENGTH + " " + TitleTextBox.Text.Length);
+                e.Cancel = true;
+            }
+            else
+            {
+                e.Cancel = false;
+            }
+        }
+        
+        private void DescriptionRichTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(DescriptionRichTextBox.Text) 
+                && DescriptionRichTextBox.Text.Length >= InputHandlerValue.MAX_LENGTH_DESCRIPTION)
+            {
+                RewardErrorProvider.SetError(DescriptionRichTextBox, InputHandlerValue.ERROR_LENGTH + " " + DescriptionRichTextBox.Text.Length);
                 e.Cancel = true;
             }
             else
@@ -71,6 +90,6 @@ namespace Task1
         private void DescriptionRichTextBox_Validated(object sender, EventArgs e)
         {
             Description = DescriptionRichTextBox.Text;
-        }
+        }        
     }
 }

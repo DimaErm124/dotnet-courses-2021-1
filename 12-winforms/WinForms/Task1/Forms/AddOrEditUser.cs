@@ -73,12 +73,17 @@ namespace Task1
         {
             if (string.IsNullOrEmpty(FirstNameTextBox.Text))
             {
-                AddOrEditUserErrorProvider.SetError(FirstNameTextBox, "Empty!");
+                AddOrEditUserErrorProvider.SetError(FirstNameTextBox, InputHandlerValue.ERROR_EMPTY);
                 e.Cancel = true;
             }
             else if (string.IsNullOrWhiteSpace(FirstNameTextBox.Text))
             {
-                AddOrEditUserErrorProvider.SetError(FirstNameTextBox, "Whitespace!");
+                AddOrEditUserErrorProvider.SetError(FirstNameTextBox, InputHandlerValue.ERROR_WHITESPACE);
+                e.Cancel = true;
+            }
+            else if (FirstNameTextBox.Text.Length >= InputHandlerValue.MAX_LENGTH_FIRST_NAME)
+            {
+                AddOrEditUserErrorProvider.SetError(FirstNameTextBox, InputHandlerValue.ERROR_LENGTH + " " + FirstNameTextBox.Text.Length);
                 e.Cancel = true;
             }
             else
@@ -91,12 +96,17 @@ namespace Task1
         {
             if (string.IsNullOrEmpty(LastNameTextBox.Text))
             {
-                AddOrEditUserErrorProvider.SetError(LastNameTextBox, "Empty!");
+                AddOrEditUserErrorProvider.SetError(LastNameTextBox, InputHandlerValue.ERROR_EMPTY);
                 e.Cancel = true;
             }
             else if (string.IsNullOrWhiteSpace(LastNameTextBox.Text))
             {
-                AddOrEditUserErrorProvider.SetError(LastNameTextBox, "Whitespace!");
+                AddOrEditUserErrorProvider.SetError(LastNameTextBox, InputHandlerValue.ERROR_WHITESPACE);
+                e.Cancel = true;
+            }
+            else if (LastNameTextBox.Text.Length >= InputHandlerValue.MAX_LENGTH_LAST_NAME)
+            {
+                AddOrEditUserErrorProvider.SetError(LastNameTextBox, InputHandlerValue.ERROR_LENGTH + " " + LastNameTextBox.Text.Length);
                 e.Cancel = true;
             }
             else
@@ -106,15 +116,19 @@ namespace Task1
         }        
 
         private void BirthdateTimePicker_Validating(object sender, CancelEventArgs e)
-        {    
-            if (BirthdateTimePicker.Value >= DateTime.Now)
+        {
+            var today = DateTime.Now;
+            var age = today.Year - BirthdateTimePicker.Value.Year - 1
+                + ((today.Month > BirthdateTimePicker.Value.Month || (today.Month == BirthdateTimePicker.Value.Month && today.Day >= BirthdateTimePicker.Value.Day)) ? 1 : 0);
+
+            if (BirthdateTimePicker.Value > today)
             {
-                AddOrEditUserErrorProvider.SetError(BirthdateTimePicker, "Age less than zero!");
+                AddOrEditUserErrorProvider.SetError(BirthdateTimePicker, InputHandlerValue.ERROR_ZERO_AGE);
                 e.Cancel = true;
-            } 
-            else if (new DateTime((DateTime.Now - BirthdateTimePicker.Value).Ticks).Year >= 150) 
+            }
+            else if (age >= InputHandlerValue.MAX_AGE) 
             {
-                AddOrEditUserErrorProvider.SetError(BirthdateTimePicker, "Age more than can be!");
+                AddOrEditUserErrorProvider.SetError(BirthdateTimePicker, InputHandlerValue.ERROR_MAX_AGE);
                 e.Cancel = true;
             }
             else
