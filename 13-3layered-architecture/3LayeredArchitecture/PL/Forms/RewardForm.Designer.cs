@@ -41,20 +41,18 @@ namespace PL
             // 
             // TitleTextBox
             // 
-            this.TitleTextBox.Location = new System.Drawing.Point(10, 32);
-            this.TitleTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TitleTextBox.Location = new System.Drawing.Point(11, 43);
             this.TitleTextBox.Name = "TitleTextBox";
-            this.TitleTextBox.Size = new System.Drawing.Size(302, 23);
+            this.TitleTextBox.Size = new System.Drawing.Size(345, 27);
             this.TitleTextBox.TabIndex = 0;
             this.TitleTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TitleTextBox_Validating);
             this.TitleTextBox.Validated += new System.EventHandler(this.TitleTextBox_Validated);
             // 
             // DescriptionRichTextBox
             // 
-            this.DescriptionRichTextBox.Location = new System.Drawing.Point(10, 84);
-            this.DescriptionRichTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DescriptionRichTextBox.Location = new System.Drawing.Point(11, 112);
             this.DescriptionRichTextBox.Name = "DescriptionRichTextBox";
-            this.DescriptionRichTextBox.Size = new System.Drawing.Size(302, 246);
+            this.DescriptionRichTextBox.Size = new System.Drawing.Size(345, 327);
             this.DescriptionRichTextBox.TabIndex = 1;
             this.DescriptionRichTextBox.Text = "";
             this.DescriptionRichTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.DescriptionRichTextBox_Validating);
@@ -63,27 +61,26 @@ namespace PL
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 15);
+            this.label1.Location = new System.Drawing.Point(11, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 15);
+            this.label1.Size = new System.Drawing.Size(41, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Title:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 67);
+            this.label2.Location = new System.Drawing.Point(11, 89);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 15);
+            this.label2.Size = new System.Drawing.Size(88, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Description:";
             // 
             // CreateRewardButton
             // 
-            this.CreateRewardButton.Location = new System.Drawing.Point(10, 333);
-            this.CreateRewardButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CreateRewardButton.Location = new System.Drawing.Point(11, 444);
             this.CreateRewardButton.Name = "CreateRewardButton";
-            this.CreateRewardButton.Size = new System.Drawing.Size(302, 28);
+            this.CreateRewardButton.Size = new System.Drawing.Size(345, 37);
             this.CreateRewardButton.TabIndex = 4;
             this.CreateRewardButton.Text = "Create";
             this.CreateRewardButton.UseVisualStyleBackColor = true;
@@ -95,16 +92,17 @@ namespace PL
             // 
             // RewardForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(342, 370);
+            this.ClientSize = new System.Drawing.Size(391, 493);
             this.Controls.Add(this.CreateRewardButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DescriptionRichTextBox);
             this.Controls.Add(this.TitleTextBox);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "RewardForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RewardForm";
             ((System.ComponentModel.ISupportInitialize)(this.RewardErrorProvider)).EndInit();
             this.ResumeLayout(false);

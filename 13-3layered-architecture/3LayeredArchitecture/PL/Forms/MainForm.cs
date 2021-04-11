@@ -136,7 +136,7 @@ namespace PL
 
                 _userRewardBL.EditReward(reward, newReward);
 
-                _rewardsSource.ResetBindings(false);
+                _rewardsSource.DataSource = _userRewardBL.GetRewards();
             }
         }        
         

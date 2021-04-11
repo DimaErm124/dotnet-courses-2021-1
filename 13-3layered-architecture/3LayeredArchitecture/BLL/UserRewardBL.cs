@@ -25,6 +25,9 @@ namespace BLL
 
         public void AddUser(User user, List<Reward> rewards)
         {
+            if (user == null)
+                throw new ArgumentNullException();
+
             _userDAO.Add(user);
 
             _userRewardsDAO.Add(user, rewards);
@@ -32,11 +35,17 @@ namespace BLL
 
         public void AddReward(Reward reward)
         {
+            if (reward == null)
+                throw new ArgumentNullException();
+
             _rewardDAO.Add(reward);
         }
 
         public void RemoveUser(User user)
         {
+            if (user == null)
+                throw new ArgumentNullException();
+
             _userDAO.Remove(user);
 
             _userRewardsDAO.Remove(user);
@@ -44,6 +53,9 @@ namespace BLL
 
         public void RemoveReward(Reward reward)
         {
+            if (reward == null)
+                throw new ArgumentNullException();
+
             _rewardDAO.Remove(reward);
 
             _userRewardsDAO.RemoveReward(reward);
@@ -51,6 +63,9 @@ namespace BLL
 
         public void EditUser(User oldUser, User newUser, List<Reward> rewards)
         {
+            if (oldUser == null || newUser == null)
+                throw new ArgumentNullException();
+
             _userDAO.Edit(oldUser, newUser);
 
             _userRewardsDAO.Edit(oldUser, newUser, rewards);
@@ -58,6 +73,9 @@ namespace BLL
 
         public void EditReward(Reward oldReward, Reward newReward)
         {
+            if (oldReward == null || newReward == null)
+                throw new ArgumentNullException();
+
             _rewardDAO.Edit(oldReward, newReward);
 
             _userRewardsDAO.EditReward(oldReward, newReward);
@@ -85,12 +103,10 @@ namespace BLL
 
         public List<Reward> GetUserRewards(User user)
         {
-            return _userRewardsDAO[user];
-        }
+            if (user == null)
+                throw new ArgumentNullException();
 
-        public IDictionary<User, List<Reward>> GetUsersRewards()
-        {
-            return _userRewardsDAO.GetUsersRewards();
+            return _userRewardsDAO[user];
         }
     }
 }

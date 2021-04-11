@@ -44,30 +44,27 @@
             // 
             // FirstNameTextBox
             // 
-            this.FirstNameTextBox.Location = new System.Drawing.Point(10, 28);
-            this.FirstNameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FirstNameTextBox.Location = new System.Drawing.Point(11, 37);
             this.FirstNameTextBox.Name = "FirstNameTextBox";
-            this.FirstNameTextBox.Size = new System.Drawing.Size(373, 23);
+            this.FirstNameTextBox.Size = new System.Drawing.Size(426, 27);
             this.FirstNameTextBox.TabIndex = 0;
             this.FirstNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.FirstNameTextBox_Validating);
             this.FirstNameTextBox.Validated += new System.EventHandler(this.FirstNameTextBox_Validated);
             // 
             // LastNameTextBox
             // 
-            this.LastNameTextBox.Location = new System.Drawing.Point(10, 76);
-            this.LastNameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.LastNameTextBox.Location = new System.Drawing.Point(11, 101);
             this.LastNameTextBox.Name = "LastNameTextBox";
-            this.LastNameTextBox.Size = new System.Drawing.Size(373, 23);
+            this.LastNameTextBox.Size = new System.Drawing.Size(426, 27);
             this.LastNameTextBox.TabIndex = 1;
             this.LastNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.LastNameTextBox_Validating);
             this.LastNameTextBox.Validated += new System.EventHandler(this.LastNameTextBox_Validated);
             // 
             // BirthdateTimePicker
             // 
-            this.BirthdateTimePicker.Location = new System.Drawing.Point(10, 128);
-            this.BirthdateTimePicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BirthdateTimePicker.Location = new System.Drawing.Point(11, 171);
             this.BirthdateTimePicker.Name = "BirthdateTimePicker";
-            this.BirthdateTimePicker.Size = new System.Drawing.Size(373, 23);
+            this.BirthdateTimePicker.Size = new System.Drawing.Size(426, 27);
             this.BirthdateTimePicker.TabIndex = 2;
             this.BirthdateTimePicker.Validating += new System.ComponentModel.CancelEventHandler(this.BirthdateTimePicker_Validating);
             this.BirthdateTimePicker.Validated += new System.EventHandler(this.BirthdateTimePicker_Validated);
@@ -75,45 +72,44 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 10);
+            this.label1.Location = new System.Drawing.Point(11, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 15);
+            this.label1.Size = new System.Drawing.Size(80, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Fisrt name:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 59);
+            this.label2.Location = new System.Drawing.Point(11, 79);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 15);
+            this.label2.Size = new System.Drawing.Size(79, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Last name:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 111);
+            this.label3.Location = new System.Drawing.Point(11, 148);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 15);
+            this.label3.Size = new System.Drawing.Size(73, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "Birthdate:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 166);
+            this.label4.Location = new System.Drawing.Point(11, 221);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 15);
+            this.label4.Size = new System.Drawing.Size(68, 20);
             this.label4.TabIndex = 7;
             this.label4.Text = "Rewards:";
             // 
             // CreateUserButton
             // 
-            this.CreateUserButton.Location = new System.Drawing.Point(10, 431);
-            this.CreateUserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CreateUserButton.Location = new System.Drawing.Point(11, 575);
             this.CreateUserButton.Name = "CreateUserButton";
-            this.CreateUserButton.Size = new System.Drawing.Size(373, 36);
+            this.CreateUserButton.Size = new System.Drawing.Size(426, 48);
             this.CreateUserButton.TabIndex = 10;
             this.CreateUserButton.Text = "Create";
             this.CreateUserButton.UseVisualStyleBackColor = true;
@@ -126,17 +122,18 @@
             // UserRewardsCheckedListBox
             // 
             this.UserRewardsCheckedListBox.FormattingEnabled = true;
-            this.UserRewardsCheckedListBox.Location = new System.Drawing.Point(10, 184);
+            this.UserRewardsCheckedListBox.Location = new System.Drawing.Point(11, 245);
+            this.UserRewardsCheckedListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.UserRewardsCheckedListBox.Name = "UserRewardsCheckedListBox";
-            this.UserRewardsCheckedListBox.Size = new System.Drawing.Size(373, 238);
+            this.UserRewardsCheckedListBox.Size = new System.Drawing.Size(426, 312);
             this.UserRewardsCheckedListBox.TabIndex = 11;
             this.UserRewardsCheckedListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.UserRewardsCheckedListBox_ItemCheck);
             // 
             // UserForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 478);
+            this.ClientSize = new System.Drawing.Size(466, 637);
             this.Controls.Add(this.UserRewardsCheckedListBox);
             this.Controls.Add(this.CreateUserButton);
             this.Controls.Add(this.label4);
@@ -146,8 +143,9 @@
             this.Controls.Add(this.BirthdateTimePicker);
             this.Controls.Add(this.LastNameTextBox);
             this.Controls.Add(this.FirstNameTextBox);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "UserForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.UserForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AddOrEditUserErrorProvider)).EndInit();
