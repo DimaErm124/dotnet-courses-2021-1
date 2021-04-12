@@ -1,4 +1,5 @@
 ﻿using EntityLibrary;
+using HandlerValue;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,9 +11,9 @@ namespace DAL
     {
         private readonly string _connectionString;
 
-        public RewardDAODB()
+        public RewardDAODB(string connectionString)
         {
-            _connectionString = "";
+            _connectionString = connectionString;
         }
 
         public void Add(Reward reward)
@@ -21,7 +22,7 @@ namespace DAL
                 throw new ArgumentNullException();
 
             using (var connection = new SqlConnection(_connectionString))
-            using (var command = new SqlCommand("", connection))
+            using (var command = new SqlCommand(CommandNameSql.INSERT_REWARD, connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
 
@@ -40,11 +41,11 @@ namespace DAL
                 throw new ArgumentNullException();
 
             using (var connection = new SqlConnection(_connectionString))
-            using (var command = new SqlCommand("", connection))
+            using (var command = new SqlCommand(CommandNameSql.UPDATE_REWARD, connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@userID", oldReward.ID);
+                command.Parameters.AddWithValue("@rewardID", oldReward.ID);
                 command.Parameters.AddWithValue("@title", newReward.Title);
                 command.Parameters.AddWithValue("@description", newReward.Description);
 
@@ -60,7 +61,7 @@ namespace DAL
                 throw new ArgumentNullException();
 
             using (var connection = new SqlConnection(_connectionString))
-            using (var command = new SqlCommand("", connection))
+            using (var command = new SqlCommand(CommandNameSql.DELETE_REWARD, connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
 
@@ -77,7 +78,7 @@ namespace DAL
             var rewards = new List<Reward>();
 
             using (var connection = new SqlConnection(_connectionString))
-            using (var command = new SqlCommand("", connection))
+            using (var command = new SqlCommand(CommandNameSql.GET_REWARDS, connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
 
@@ -90,7 +91,9 @@ namespace DAL
 
                     var id = rewardsString.GetInt32(0);
                     var title = rewardsString.GetString(1);
-                    var description = rewardsString.GetString(2);
+                    string description = String.Empty;
+                    if (!rewardsString.IsDBNull(2))
+                        description = rewardsString.GetString(2);
 
                     var reward = new Reward(id, title, description);
 

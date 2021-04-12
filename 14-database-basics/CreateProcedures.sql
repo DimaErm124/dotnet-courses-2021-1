@@ -28,19 +28,22 @@ GO
 
 CREATE OR ALTER PROCEDURE DeleteUser(@userID int)
 AS
-	DELETE FROM UserRewards WHERE UserID = @userID
 	DELETE FROM Users WHERE UserID = @userID
 GO
 
 CREATE OR ALTER PROCEDURE DeleteReward(@rewardID int)
 AS
-	DELETE FROM UserRewards WHERE RewardID = @rewardID
-	DELETE FROM RewardingUsers WHERE RewardID = @rewardID
+	DELETE FROM Rewards WHERE RewardID = @rewardID
 GO
 
 CREATE OR ALTER PROCEDURE DeleteUserReward(@userID int)
 AS
 	DELETE FROM UserRewards WHERE UserID = @userID
+GO
+
+CREATE OR ALTER PROCEDURE DeleteRewardOfUser(@rewardID int)
+AS
+	DELETE FROM UserRewards WHERE RewardID = @rewardID
 GO
 
 CREATE OR ALTER PROCEDURE UpdateUser(
@@ -63,7 +66,7 @@ CREATE OR ALTER PROCEDURE UpdateReward(
 	@title nvarchar(50),
 	@description nvarchar(250))
 AS
-	UPDATE RewardingUsers
+	UPDATE Rewards
 	SET
 		Title = @title,
 		DescriptionReward = @description

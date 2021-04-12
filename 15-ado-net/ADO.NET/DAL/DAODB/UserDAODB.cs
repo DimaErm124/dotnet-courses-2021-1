@@ -1,4 +1,5 @@
 ﻿using EntityLibrary;
+using HandlerValue;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,9 +11,9 @@ namespace DAL
     {
         private readonly string _connectionString;
 
-        public UserDAODB()
+        public UserDAODB(string connectionString)
         {
-            _connectionString = "";
+            _connectionString = connectionString;
         }
 
         public void Add(User user)
@@ -21,7 +22,7 @@ namespace DAL
                 throw new ArgumentNullException();
 
             using (var connection = new SqlConnection(_connectionString))
-            using (var command = new SqlCommand("", connection))
+            using (var command = new SqlCommand(CommandNameSql.INSERT_USER, connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
 
@@ -41,7 +42,7 @@ namespace DAL
                 throw new ArgumentNullException();
 
             using (var connection = new SqlConnection(_connectionString))
-            using (var command = new SqlCommand("", connection))
+            using (var command = new SqlCommand(CommandNameSql.UPDATE_USER, connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
 
@@ -62,7 +63,7 @@ namespace DAL
                 throw new ArgumentNullException();
 
             using (var connection = new SqlConnection(_connectionString))
-            using (var command = new SqlCommand("", connection))
+            using (var command = new SqlCommand(CommandNameSql.DELETE_USER, connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
 
@@ -79,7 +80,7 @@ namespace DAL
             var users = new List<User>();
 
             using (var connection = new SqlConnection(_connectionString))
-            using (var command = new SqlCommand("", connection))
+            using (var command = new SqlCommand(CommandNameSql.GET_USERS, connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
 

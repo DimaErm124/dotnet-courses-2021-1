@@ -48,7 +48,13 @@ namespace PL
 
             foreach(var reward in rewards)
             {
-                UserRewardsCheckedListBox.SetItemChecked(reward.ID - 1, true);
+                for (int i = 0; i < objects.Length; i++)
+                {
+                    if (((Reward)objects[i]).ID == reward.ID)
+                    {
+                        UserRewardsCheckedListBox.SetItemChecked(i, true);
+                    }
+                }                
             }
 
             CreateUserButton.Text = functionName;

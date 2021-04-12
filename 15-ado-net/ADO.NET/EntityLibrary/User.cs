@@ -62,7 +62,7 @@ namespace EntityLibrary
             get
             {
                 var today = DateTime.Now;
-                return Birthdate.Year - today.Year - 1
+                return today.Year - Birthdate.Year - 1
                     + ((today.Month >= Birthdate.Month || (today.Month == Birthdate.Month && today.Day >= Birthdate.Day)) ? 1 : 0);
             }
         }

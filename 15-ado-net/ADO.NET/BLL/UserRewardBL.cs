@@ -2,6 +2,7 @@
 using EntityLibrary;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 
 namespace BLL
@@ -16,11 +17,26 @@ namespace BLL
 
         public UserRewardBL()
         {
-            _userDAO = new UserDAO();
+            bool context = bool.Parse(ConfigurationManager.AppSettings["context"]);
 
-            _rewardDAO = new RewardDAO();
+            if (context)
+            {
+                var connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
 
-            _userRewardsDAO = new UserRewardsDAO();
+                _userDAO = new UserDAODB(connectionString);
+
+                _rewardDAO = new RewardDAODB(connectionString);
+
+                _userRewardsDAO = new UserRewardsDAODB(connectionString);
+            }
+            else
+            {
+                _userDAO = new UserDAO();
+
+                _rewardDAO = new RewardDAO();
+
+                _userRewardsDAO = new UserRewardsDAO();
+            }
         }
 
         public void AddUser(User user, List<Reward> rewards)
