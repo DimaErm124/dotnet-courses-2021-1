@@ -11,8 +11,6 @@ namespace DAL
 
         void Remove(User user);
 
-        void Sort();
-
         List<User> GetUsers();
     }
 }

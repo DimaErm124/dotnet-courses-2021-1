@@ -72,7 +72,7 @@ namespace PL
 
                 _userRewardBL.AddUser(user,form.Rewards);
 
-                _usersSource.ResetBindings(false);
+                UpdateUsers();
             }
         }
 
@@ -86,7 +86,7 @@ namespace PL
 
                 _userRewardBL.AddReward(new Reward(_rewardsCounter, form.Title, form.Description));
 
-                _rewardsSource.ResetBindings(false);
+                UpdateRewards();
             }
         }
 
@@ -117,7 +117,7 @@ namespace PL
 
                 _userRewardBL.EditUser(user, newUser, form.Rewards);
 
-                _usersSource.ResetBindings(false);
+                UpdateUsers();
             }
         }
 
@@ -136,7 +136,7 @@ namespace PL
 
                 _userRewardBL.EditReward(reward, newReward);
 
-                _rewardsSource.DataSource = _userRewardBL.GetRewards();
+                UpdateRewards();
             }
         }        
         
@@ -161,7 +161,7 @@ namespace PL
 
             _userRewardBL.RemoveUser(user);
 
-            _usersSource.ResetBindings(false);
+            UpdateUsers();
         }
 
         private void DeleteRewardButton_Click(object sender, EventArgs e)
@@ -173,7 +173,21 @@ namespace PL
 
             _userRewardBL.RemoveReward(reward);
 
-            _rewardsSource.ResetBindings(false);
+            UpdateRewards();
+        }
+
+        private void UpdateUsers()
+        {
+            _usersSource.DataSource = null;
+
+            _usersSource.DataSource = _userRewardBL.GetUsers();
+        }
+
+        private void UpdateRewards()
+        {
+            _rewardsSource.DataSource = null;
+
+            _rewardsSource.DataSource = _userRewardBL.GetRewards();
         }
 
         private void UsersDGV_CellEnter(object sender, DataGridViewCellEventArgs e)

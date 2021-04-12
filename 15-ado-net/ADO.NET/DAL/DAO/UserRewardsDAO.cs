@@ -73,10 +73,6 @@ namespace DAL
                     _userRewards[el.Key].Remove(reward);
                 }
             }
-        }
-        public IDictionary<User, List<Reward>> GetUsersRewards()
-        {
-            return _userRewards;
-        }        
+        } 
     }
 }

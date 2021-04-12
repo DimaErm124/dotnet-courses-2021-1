@@ -46,9 +46,9 @@ namespace BLL
             if (user == null)
                 throw new ArgumentNullException();
 
-            _userDAO.Remove(user);
-
             _userRewardsDAO.Remove(user);
+            
+            _userDAO.Remove(user);            
         }
 
         public void RemoveReward(Reward reward)
@@ -56,9 +56,9 @@ namespace BLL
             if (reward == null)
                 throw new ArgumentNullException();
 
-            _rewardDAO.Remove(reward);
-
             _userRewardsDAO.RemoveReward(reward);
+            
+            _rewardDAO.Remove(reward);            
         }
 
         public void EditUser(User oldUser, User newUser, List<Reward> rewards)

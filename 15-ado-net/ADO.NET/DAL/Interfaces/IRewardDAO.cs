@@ -11,8 +11,6 @@ namespace DAL
 
         void Edit(Reward oldReward, Reward newReward);
 
-        void Sort();
-
         List<Reward> GetRewards();
     }
 

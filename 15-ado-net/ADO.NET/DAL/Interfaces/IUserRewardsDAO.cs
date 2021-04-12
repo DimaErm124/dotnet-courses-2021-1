@@ -15,8 +15,6 @@ namespace DAL
 
         void RemoveReward(Reward reward);
 
-        IDictionary<User, List<Reward>> GetUsersRewards();
-
         List<Reward> this[User user]
         {
             get;
