@@ -16,10 +16,12 @@ namespace DAL
             _connectionString = connectionString;
         }
 
-        public void Add(User user)
+        public User Add(User user)
         {
             if (user == null)
                 throw new ArgumentNullException();
+
+            int id = 0;
 
             using (var connection = new SqlConnection(_connectionString))
             using (var command = new SqlCommand(CommandNameSql.INSERT_USER, connection))
@@ -32,8 +34,12 @@ namespace DAL
 
                 connection.Open();
 
-                command.ExecuteNonQuery();
+                id = (int)command.ExecuteScalar();
             }
+
+            user.ID = id;
+
+            return user;
         }
 
         public void Edit(User oldUser, User newUser)

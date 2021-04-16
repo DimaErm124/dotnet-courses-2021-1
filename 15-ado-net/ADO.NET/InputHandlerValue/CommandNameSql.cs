@@ -25,5 +25,7 @@
         public const string DELETE_REWARDS_OF_USER = "DeleteUserReward";
 
         public const string GET_REWARDS_OF_USER = "GetRewardsOfUser";
+
+        public const string GetAll = nameof(GetAll);
     }
 }

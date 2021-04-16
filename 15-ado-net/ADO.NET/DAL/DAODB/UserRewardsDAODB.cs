@@ -44,16 +44,60 @@ namespace DAL
                     command.ExecuteNonQuery();
                 }
             }
-        }   
-        
+        }
+
         public void Edit(User oldUser, User newUser, List<Reward> rewards)
         {
             if (newUser == null)
                 throw new ArgumentNullException();
 
-            this.Remove(newUser);
-            this.Add(newUser, rewards);
-            
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                var sqlTransaction = connection.BeginTransaction();
+
+                var commandDelete = new SqlCommand(CommandNameSql.DELETE_REWARDS_OF_USER, connection);
+                var commandAdd = new SqlCommand(CommandNameSql.INSERT_REWARD_OF_USER, connection);
+
+                commandDelete.CommandType = CommandType.StoredProcedure;
+                commandAdd.CommandType = CommandType.StoredProcedure;
+
+                commandDelete.Transaction = sqlTransaction;
+                commandAdd.Transaction = sqlTransaction;
+
+                try
+                {
+                    commandDelete.Parameters.AddWithValue("@userID", newUser.ID);
+
+                    commandDelete.ExecuteNonQuery();
+
+                    var parameterUserID = new SqlParameter("userID", SqlDbType.Int);
+                    var parameterRewardID = new SqlParameter("rewardID", SqlDbType.Int);
+
+                    commandAdd.Parameters.Add(parameterUserID);
+                    commandAdd.Parameters.Add(parameterRewardID);
+
+                    foreach (var reward in rewards)
+                    {
+                        commandAdd.Parameters[0].Value = newUser.ID;
+                        commandAdd.Parameters[1].Value = reward.ID;
+
+                        commandAdd.ExecuteNonQuery();
+                    }
+
+                    sqlTransaction.Commit();
+                }
+                catch
+                {
+                    sqlTransaction.Rollback();
+                }
+                finally
+                {
+                    commandDelete.Dispose();
+                    commandAdd.Dispose();
+                }
+            }
         }
 
         public void Remove(User user)
@@ -126,7 +170,7 @@ namespace DAL
             }
 
             return rewards;
-        }        
+        }
 
         public void EditReward(Reward oldReward, Reward newReward)
         {

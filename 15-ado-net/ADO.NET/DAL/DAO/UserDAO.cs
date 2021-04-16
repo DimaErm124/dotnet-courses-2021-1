@@ -13,12 +13,14 @@ namespace DAL
             _users = new List<User>();
         }
 
-        public void Add(User user)
+        public User Add(User user)
         {
             if (user == null)
                 throw new ArgumentNullException();
 
             _users.Add(user);
+
+            return user;
         }        
 
         public void Remove(User user)

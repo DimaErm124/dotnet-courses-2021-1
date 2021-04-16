@@ -23,9 +23,11 @@ namespace PL
         private BindingSource _rewardsSource;
         private BindingSource _userRewardsSource;       
 
-        public MainForm()
+        public MainForm(UserRewardBL userRewardBL)
         {
             InitializeComponent();
+
+            _userRewardBL = userRewardBL;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -33,8 +35,6 @@ namespace PL
             _usersSource = new BindingSource();
             _rewardsSource = new BindingSource();
             _userRewardsSource = new BindingSource();
-
-            _userRewardBL = new UserRewardBL();
 
             _usersSource.DataSource = _userRewardBL.GetUsers();        
             _rewardsSource.DataSource = _userRewardBL.GetRewards();
@@ -208,7 +208,10 @@ namespace PL
 
         private void MainTabControl_Selected(object sender, TabControlEventArgs e)
         {
-            _userRewardsSource.DataSource = null;
+            if (e.TabPage.Text == "Rewards")
+                _userRewardsSource.DataSource = null;
+            else
+                _userRewardsSource.DataSource = _userRewardBL.GetUserRewards((User)_usersSource.Current);
         }
 
         private void UsersDGV_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)

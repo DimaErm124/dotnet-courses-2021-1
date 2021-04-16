@@ -15,28 +15,13 @@ namespace BLL
 
         private IUserRewardsDAO _userRewardsDAO;
 
-        public UserRewardBL()
+        public UserRewardBL(IUserDAO userDAO, IRewardDAO rewardDAO, IUserRewardsDAO userRewardsDAO)
         {
-            bool context = bool.Parse(ConfigurationManager.AppSettings["context"]);
+            _userDAO = userDAO;
 
-            if (context)
-            {
-                var connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+            _rewardDAO = rewardDAO;
 
-                _userDAO = new UserDAODB(connectionString);
-
-                _rewardDAO = new RewardDAODB(connectionString);
-
-                _userRewardsDAO = new UserRewardsDAODB(connectionString);
-            }
-            else
-            {
-                _userDAO = new UserDAO();
-
-                _rewardDAO = new RewardDAO();
-
-                _userRewardsDAO = new UserRewardsDAO();
-            }
+            _userRewardsDAO = userRewardsDAO;
         }
 
         public void AddUser(User user, List<Reward> rewards)
@@ -44,7 +29,7 @@ namespace BLL
             if (user == null)
                 throw new ArgumentNullException();
 
-            _userDAO.Add(user);
+            user = _userDAO.Add(user);
 
             _userRewardsDAO.Add(user, rewards);
         }

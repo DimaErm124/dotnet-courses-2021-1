@@ -7,7 +7,8 @@ CREATE OR ALTER PROCEDURE InsertUser(
 	@birthdate date)
 AS
 	INSERT INTO Users(FirstName, LastName, Birthdate)
-	VALUES(@firstName, @lastName, @birthdate)
+	OUTPUT INSERTED.UserID
+	VALUES(@firstName, @lastName, @birthdate)	
 GO
 
 CREATE OR ALTER PROCEDURE InsertReward(

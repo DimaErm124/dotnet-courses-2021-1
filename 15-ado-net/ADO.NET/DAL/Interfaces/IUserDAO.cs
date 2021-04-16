@@ -5,7 +5,7 @@ namespace DAL
 {
     public interface IUserDAO
     {
-        void Add(User user);
+        User Add(User user);
         
         void Edit(User oldUser, User newUser);
 
