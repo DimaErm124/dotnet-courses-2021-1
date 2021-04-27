@@ -42,44 +42,38 @@ namespace BLL
             _rewardDAO.Add(reward);
         }
 
-        public void RemoveUser(User user)
+        public void RemoveUser(int id)
         {
-            if (user == null)
-                throw new ArgumentNullException();
-
-            _userRewardsDAO.Remove(user);
+            _userRewardsDAO.Remove(id);
             
-            _userDAO.Remove(user);            
+            _userDAO.Remove(id);            
         }
 
-        public void RemoveReward(Reward reward)
+        public void RemoveReward(int id)
         {
-            if (reward == null)
-                throw new ArgumentNullException();
-
-            _userRewardsDAO.RemoveReward(reward);
+            _userRewardsDAO.RemoveReward(id);
             
-            _rewardDAO.Remove(reward);            
+            _rewardDAO.Remove(id);            
         }
 
-        public void EditUser(User oldUser, User newUser, List<Reward> rewards)
+        public void EditUser(User newUser, List<Reward> rewards)
         {
-            if (oldUser == null || newUser == null)
+            if (newUser == null)
                 throw new ArgumentNullException();
 
-            _userDAO.Edit(oldUser, newUser);
+            _userDAO.Edit(newUser);
 
-            _userRewardsDAO.Edit(oldUser, newUser, rewards);
+            _userRewardsDAO.Edit(newUser, rewards);
         }
 
-        public void EditReward(Reward oldReward, Reward newReward)
+        public void EditReward(Reward newReward)
         {
-            if (oldReward == null || newReward == null)
+            if (newReward == null)
                 throw new ArgumentNullException();
 
-            _rewardDAO.Edit(oldReward, newReward);
+            _rewardDAO.Edit(newReward);
 
-            _userRewardsDAO.EditReward(oldReward, newReward);
+            _userRewardsDAO.EditReward(newReward);
         }
 
         public List<User> SortUsersByColumn(string columnName)
@@ -108,6 +102,25 @@ namespace BLL
                 throw new ArgumentNullException();
 
             return _userRewardsDAO[user];
+        }
+
+        public List<Reward> GetNotChoosingRewards(User user)
+        {
+            var allRewards = GetRewards();
+            var userRewards = GetUserRewards(user);
+
+            if (userRewards.Count == 0)
+                return allRewards;
+
+            foreach(var el in userRewards)
+            {
+                if (allRewards.Contains(allRewards.Find(x => x.ID == el.ID)))
+                {
+                    allRewards.Remove(allRewards.Find(x => x.ID == el.ID));
+                }
+            }
+
+            return allRewards;
         }
     }
 }

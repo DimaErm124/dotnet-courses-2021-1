@@ -7,9 +7,9 @@ namespace DAL
     {
         User Add(User user);
         
-        void Edit(User oldUser, User newUser);
+        void Edit(User newUser);
 
-        void Remove(User user);
+        void Remove(int id);
 
         List<User> GetUsers();
     }

@@ -7,9 +7,9 @@ namespace DAL
     {
         void Add(Reward reward);
 
-        void Remove(Reward reward);
+        void Remove(int id);
 
-        void Edit(Reward oldReward, Reward newReward);
+        void Edit(Reward newReward);
 
         List<Reward> GetRewards();
     }

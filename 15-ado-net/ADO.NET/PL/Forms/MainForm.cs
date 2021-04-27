@@ -134,7 +134,7 @@ namespace PL
             {
                 var newReward = new Reward(reward.ID, form.Title, form.Description);
 
-                _userRewardBL.EditReward(reward, newReward);
+                _userRewardBL.EditReward(newReward);
 
                 UpdateRewards();
             }

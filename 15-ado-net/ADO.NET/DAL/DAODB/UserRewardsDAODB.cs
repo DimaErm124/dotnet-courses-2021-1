@@ -46,7 +46,7 @@ namespace DAL
             }
         }
 
-        public void Edit(User oldUser, User newUser, List<Reward> rewards)
+        public void Edit(User newUser, List<Reward> rewards)
         {
             if (newUser == null)
                 throw new ArgumentNullException();
@@ -100,17 +100,14 @@ namespace DAL
             }
         }
 
-        public void Remove(User user)
+        public void Remove(int id)
         {
-            if (user == null)
-                throw new ArgumentNullException();
-
             using (var connection = new SqlConnection(_connectionString))
             using (var command = new SqlCommand(CommandNameSql.DELETE_REWARDS_OF_USER, connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@userID", user.ID);
+                command.Parameters.AddWithValue("@userID", id);
 
                 connection.Open();
 
@@ -118,17 +115,14 @@ namespace DAL
             }
         }
 
-        public void RemoveReward(Reward reward)
+        public void RemoveReward(int id)
         {
-            if (reward == null)
-                throw new ArgumentNullException();
-
             using (var connection = new SqlConnection(_connectionString))
             using (var command = new SqlCommand(CommandNameSql.DELETE_REWARD_OF_USER, connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@rewardID", reward.ID);
+                command.Parameters.AddWithValue("@rewardID", id);
 
                 connection.Open();
 
@@ -172,7 +166,7 @@ namespace DAL
             return rewards;
         }
 
-        public void EditReward(Reward oldReward, Reward newReward)
+        public void EditReward(Reward newReward)
         {
         }
     }

@@ -30,11 +30,15 @@ namespace EntityLibrary
             get { return _description; }
             set
             {
+                if (value == null)
+                {
+                    value = "";
+                }
                 if (value.Length > InputHandlerValue.MAX_LENGTH_DESCRIPTION)
                 {
                     throw new ArgumentException();
                 }
-
+                
                 _description = value;
             }
         }

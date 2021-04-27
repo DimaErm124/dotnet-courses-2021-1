@@ -23,20 +23,17 @@ namespace DAL
             return user;
         }        
 
-        public void Remove(User user)
+        public void Remove(int id)
         {
-            if (user == null)
-                throw new ArgumentNullException();
-
-            _users.Remove(user);
+            _users.Remove(_users.Find(x => x.ID == id));
         }
         
-        public void Edit(User oldUser, User newUser)
+        public void Edit(User newUser)
         {
-            if (oldUser == null || newUser == null)
+            if (newUser == null)
                 throw new ArgumentNullException();
 
-            this.Remove(oldUser);
+            this.Remove(newUser.ID);
             this.Add(newUser);
             this.Sort();
         }

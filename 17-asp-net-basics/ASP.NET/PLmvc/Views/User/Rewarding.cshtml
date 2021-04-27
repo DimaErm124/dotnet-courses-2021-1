@@ -1,0 +1,32 @@
+﻿@model UserViewModel
+
+<h1 class="display-4">Rewarding user</h1>
+<br />
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="User" asp-action="Rewarding" method="post">
+            @foreach (EntityLibrary.Reward item in ViewBag.NotChoosingRewards)
+            {
+                <div class="form-group">
+                    <input class="form-check-input" type="checkbox" name="rewards" value="@item.ID" />
+                    <label class="form-check-label">
+                        @item.Title
+                    </label>
+                </div>
+            }
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-outline-success btn-block" />
+            </div>
+        </form>
+        <form asp-controller="User" asp-action="Details" asp-route-id="@Model.ID">
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline-secondary btn-block">Back</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

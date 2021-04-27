@@ -21,20 +21,17 @@ namespace DAL
             _rewards.Add(reward);
         }       
 
-        public void Remove(Reward reward)
+        public void Remove(int id)
         {
-            if (reward == null)
-                throw new ArgumentNullException();
-
-            _rewards.Remove(reward);
+            _rewards.Remove(_rewards.Find(x => x.ID == id));
         }
         
-        public void Edit(Reward oldReward, Reward newReward)
+        public void Edit(Reward newReward)
         {
-            if (oldReward == null || newReward == null)
+            if (newReward == null)
                 throw new ArgumentNullException();
 
-            this.Remove(oldReward);
+            this.Remove(newReward.ID);
             this.Add(newReward);
             this.Sort();
         }

@@ -7,13 +7,13 @@ namespace DAL
     {
         void Add(User user, List<Reward> rewards);
 
-        void Edit(User oldUser, User newUser, List<Reward> rewards);
+        void Edit(User newUser, List<Reward> rewards);
 
-        void EditReward(Reward oldReward, Reward newReward);
+        void EditReward(Reward newReward);
 
-        void Remove(User user);
+        void Remove(int id);
 
-        void RemoveReward(Reward reward);
+        void RemoveReward(int id);
 
         List<Reward> this[User user]
         {

@@ -29,22 +29,24 @@ namespace DAL
             _userRewards.Add(user, rewards);
         }
 
-        public void Edit(User oldUser, User newUser, List<Reward> rewards)
+        public void Edit(User newUser, List<Reward> rewards)
         {
-            if (oldUser == null || newUser == null)
+            if (newUser == null)
                 throw new ArgumentNullException();
 
-            this.Remove(oldUser);
+            this.Remove(newUser.ID);
             this.Add(newUser, rewards);
         }
 
-        public void EditReward(Reward oldReward, Reward newReward)
-        {
-            if (oldReward == null || newReward == null)
+        public void EditReward(Reward newReward)
+        {            
+            if (newReward == null)
                 throw new ArgumentNullException();
 
             foreach (var el in _userRewards)
             {
+                var oldReward = _userRewards[el.Key].Find(x => x.ID == newReward.ID);
+
                 if (_userRewards[el.Key].Contains(oldReward))
                 {
                     _userRewards[el.Key].Remove(oldReward);
@@ -56,18 +58,17 @@ namespace DAL
         }
 
 
-        public void Remove(User user)
+        public void Remove(int id)
         {
-            if (user == null)
-                throw new ArgumentNullException();
-
-            _userRewards.Remove(user);
+            _userRewards.Remove(((List<User>)_userRewards.Keys).Find(x=>x.ID==id));
         }
 
-        public void RemoveReward(Reward reward)
+        public void RemoveReward(int id)
         {
             foreach (var el in _userRewards)
             {
+                var reward = _userRewards[el.Key].Find(x => x.ID == id);
+
                 if (_userRewards[el.Key].Contains(reward))
                 {
                     _userRewards[el.Key].Remove(reward);

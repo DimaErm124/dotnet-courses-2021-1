@@ -42,9 +42,9 @@ namespace DAL
             return user;
         }
 
-        public void Edit(User oldUser, User newUser)
+        public void Edit(User newUser)
         {
-            if (oldUser == null || newUser == null)
+            if (newUser == null)
                 throw new ArgumentNullException();
 
             using (var connection = new SqlConnection(_connectionString))
@@ -52,7 +52,7 @@ namespace DAL
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@userID", oldUser.ID);
+                command.Parameters.AddWithValue("@userID", newUser.ID);
                 command.Parameters.AddWithValue("@firstName", newUser.FirstName);
                 command.Parameters.AddWithValue("@lastName", newUser.LastName);
                 command.Parameters.AddWithValue("@birthdate", newUser.Birthdate);
@@ -63,17 +63,14 @@ namespace DAL
             }
         }
 
-        public void Remove(User user)
+        public void Remove(int id)
         {
-            if (user == null)
-                throw new ArgumentNullException();
-
             using (var connection = new SqlConnection(_connectionString))
             using (var command = new SqlCommand(CommandNameSql.DELETE_USER, connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.AddWithValue("@userID", user.ID);
+                command.Parameters.AddWithValue("@userID", id);
 
                 connection.Open();
 
