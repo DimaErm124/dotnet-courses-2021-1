@@ -2,6 +2,7 @@
 
 namespace EmployeeEntityLibrary
 {
+
     public class Employee
     {
         private int _id;
@@ -14,7 +15,7 @@ namespace EmployeeEntityLibrary
             set
             {
                 if (value < 0)
-                    throw new ArgumentException();
+                    throw new ArgumentException(ExceptionStringValues.IdMessage);
                 _id = value;
             }
         }
@@ -29,7 +30,7 @@ namespace EmployeeEntityLibrary
             set
             {
                 if (value < 0)
-                    throw new ArgumentException();
+                    throw new ArgumentException(ExceptionStringValues.SalaryPerHour);
                 _salaryPerHour = value;
             }
         }
