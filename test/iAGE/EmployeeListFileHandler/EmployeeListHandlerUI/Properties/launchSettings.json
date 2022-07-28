@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "EmployeeListHandlerUI": {
+      "commandName": "Project",
+      "commandLineArgs": "-add FirstName:John LastName:Doe Salary:100.50 -add FirstName:John LastName:Doe Salary:100.50 -add FirstName:John LastName:Doe Salary:100.50 -update Id:3 FirstName:James -delete Id:2 -get Id:2 -get Id:3 -getall"
+    }
+  }
+}
